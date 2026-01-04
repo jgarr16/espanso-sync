@@ -1,0 +1,20 @@
+matches:
+  - trigger: "jgallergy"
+    label: "Allergy log template"
+    replace: |
+      {{today}}
+          - Swim: yes
+          - Weight: 
+          - Kefir milk: no
+          - Coffee: yes
+          - Tea: no
+          - Nuts: with yogurt
+          - Chocolate: no
+          - Symptoms:
+              - Time: 5PM
+              - 
+    vars:
+      - name: today
+        type: date
+        params:
+          format: "%Y-%m-%d"

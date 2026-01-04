@@ -1,0 +1,420 @@
+matches:
+  - trigger: "jgtrig"
+    label: "List triggers by YAML file"
+    replace: "{{trigger_list}}"
+    vars:
+      - name: trigger_list
+        type: script
+        params:
+          args:
+            - python3
+            - -c
+            - |
+              import os
+              import platform
+              import yaml
+              from pathlib import Path
+
+              def find_match_dir():
+                  env_dir = os.environ.get("ESPANSO_MATCH_DIR")
+                  if env_dir:
+                      return Path(env_dir).expanduser()
+
+                  system = platform.system()
+                  home = Path.home()
+                  if system == "Windows":
+                      base = Path(os.environ.get("APPDATA", home / "AppData/Roaming"))
+                      return base / "espanso" / "match" / "user"
+                  if system == "Darwin":
+                      return home / "Library" / "Application Support" / "espanso" / "match" / "user"
+                  return Path(os.environ.get("XDG_CONFIG_HOME", home / ".config")) / "espanso" / "match" / "user"
+
+              def get_yaml_files(directory):
+                  return sorted([f for f in os.listdir(directory) if f.endswith(".yml")])
+
+              def get_triggers(file_path):
+                  triggers = []
+                  with open(file_path, "r", encoding="utf-8") as file:
+                      try:
+                          data = yaml.safe_load(file)
+                          if isinstance(data, dict) and "matches" in data:
+                              for match in data["matches"]:
+                                  if isinstance(match, dict) and "trigger" in match:
+                                      triggers.append(str(match["trigger"]))
+                      except yaml.YAMLError:
+                          pass
+                  return sorted(triggers)
+
+              def main():
+                  directory = find_match_dir()
+                  if not directory.exists():
+                      print(f"[JGTRIG] Match directory not found: {directory}")
+                      return
+
+                  lines = ["=========JGTRIG==========", ""]
+                  for file_name in get_yaml_files(directory):
+                      lines.append(file_name)
+                      file_path = directory / file_name
+                      triggers = get_triggers(file_path)
+                      if triggers:
+                          lines.extend(f"  - {t}" for t in triggers)
+                      else:
+                          lines.append("  - [No triggers found]")
+                      lines.append("")
+                  lines.extend(["", "\u200b"])
+                  print("\n".join(lines))
+
+              main()
+
+  - trigger: "jghelp"
+    label: "How to browse YAML triggers"
+    replace: |
+      =========JGHELP==========
+
+      1) List YAML files:
+         - Type: `jgyml`
+
+      2) Show triggers + labels for a file:
+         - Type: `jg_<yamlname>` then a space or a period
+         - Example: `jg_ai `  or  `jg_ai.`
+
+      
+      
+
+  - trigger: "jghelppopup"
+    label: "Browse triggers in a popup (macOS)"
+    replace: "{{jghelp_window}}"
+    vars:
+      - name: jghelp_window
+        type: shell
+        params:
+          cmd: |
+            python3 - <<'PY'
+            import os
+            import platform
+            import subprocess
+            import sys
+            import tempfile
+            from pathlib import Path
+            import yaml
+
+
+            def find_match_dir():
+                env_dir = os.environ.get("ESPANSO_MATCH_DIR")
+                if env_dir:
+                    return Path(env_dir).expanduser()
+
+                system = platform.system()
+                home = Path.home()
+                if system == "Windows":
+                    base = Path(os.environ.get("APPDATA", home / "AppData/Roaming"))
+                    return base / "espanso" / "match" / "user"
+                if system == "Darwin":
+                    return home / "Library" / "Application Support" / "espanso" / "match" / "user"
+                return Path(os.environ.get("XDG_CONFIG_HOME", home / ".config")) / "espanso" / "match" / "user"
+
+
+            def choose_file(names):
+                args = ["osascript"]
+                list_text = ", ".join(f'"{n}"' for n in names)
+                args += ["-e", f"set fileList to {{{list_text}}}"]
+                args += ["-e", 'set chosen to choose from list fileList with prompt "Select a YAML file to view triggers" without multiple selections allowed']
+                args += ["-e", 'if chosen is false then return ""']
+                args += ["-e", 'return (item 1 of chosen)']
+                result = subprocess.run(args, capture_output=True, text=True)
+                return result.stdout.strip()
+
+
+            def show_triggers(text):
+                args = ["osascript"]
+                args += ["-e", f'set trigText to do shell script "cat " & quoted form of POSIX file "{text}"']
+                args += ["-e", 'set dialogResult to display dialog trigText buttons {"Back", "Copy", "OK"} default button "OK" with title "Espanso JGHELP"']
+                args += ["-e", 'if button returned of dialogResult is "Copy" then set the clipboard to trigText']
+                args += ["-e", 'return button returned of dialogResult']
+                result = subprocess.run(args, capture_output=True, text=True)
+                return result.stdout.strip()
+
+
+            def get_triggers(path):
+                triggers = []
+                try:
+                    with open(path, "r", encoding="utf-8") as fh:
+                        data = yaml.safe_load(fh)
+                        if isinstance(data, dict) and "matches" in data:
+                            for match in data["matches"]:
+                                if isinstance(match, dict) and "trigger" in match:
+                                    triggers.append(str(match["trigger"]))
+                except Exception:
+                    pass
+                return sorted(triggers)
+
+
+            def main():
+                match_dir = find_match_dir()
+                if not match_dir.exists():
+                    subprocess.run(
+                        [
+                            "osascript",
+                            "-e",
+                            f'display dialog "Match directory not found:\\n{match_dir}" buttons {{"OK"}} default button "OK" with title "Espanso JGHELP"',
+                        ]
+                    )
+                    return
+
+                names = sorted(f for f in os.listdir(match_dir) if f.endswith(".yml"))
+                if not names:
+                    subprocess.run(
+                        [
+                            "osascript",
+                            "-e",
+                            f'display dialog "No YAML files found in:\\n{match_dir}" buttons {{"OK"}} default button "OK" with title "Espanso JGHELP"',
+                        ]
+                    )
+                    return
+
+                while True:
+                    selected = choose_file(names)
+                    if not selected:
+                        return
+
+                    file_path = match_dir / selected
+                    triggers = get_triggers(file_path)
+                    lines = [selected, ""]
+                    if triggers:
+                        lines.extend(f"- {t}" for t in triggers)
+                    else:
+                        lines.append("[No triggers found]")
+
+                    with tempfile.NamedTemporaryFile("w", delete=False) as tmp:
+                        tmp.write("\n".join(lines))
+                        tmp_path = tmp.name
+
+                    action = show_triggers(tmp_path)
+                    os.unlink(tmp_path)
+
+                    if action == "Back":
+                        continue
+                    return
+
+
+            if __name__ == "__main__":
+                main()
+            PY
+
+  - trigger: "jgyaml"
+    label: "List YAML files (alias)"
+    replace: "{{jgyml_out}}"
+    vars:
+      - name: jgyml_out
+        type: match
+        params:
+          trigger: "jgyml"
+
+  - trigger: "jggeneral"
+    label: "List triggers in general.yml"
+    replace: "{{jggeneral_triggers}}"
+    vars:
+      - name: jggeneral_triggers
+        type: script
+        params:
+          args:
+            - python3
+            - -c
+            - |
+              import os
+              import platform
+              import yaml
+              from pathlib import Path
+
+              def find_match_dir():
+                  env_dir = os.environ.get("ESPANSO_MATCH_DIR")
+                  if env_dir:
+                      return Path(env_dir).expanduser()
+
+                  system = platform.system()
+                  home = Path.home()
+                  if system == "Windows":
+                      base = Path(os.environ.get("APPDATA", home / "AppData/Roaming"))
+                      return base / "espanso" / "match" / "user"
+                  if system == "Darwin":
+                      return home / "Library" / "Application Support" / "espanso" / "match" / "user"
+                  return Path(os.environ.get("XDG_CONFIG_HOME", home / ".config")) / "espanso" / "match" / "user"
+
+              directory = find_match_dir()
+
+              def get_triggers(file_path):
+                  triggers = []
+                  with open(file_path, "r", encoding="utf-8") as file:
+                      try:
+                          data = yaml.safe_load(file)
+                          if isinstance(data, dict) and "matches" in data:
+                              for match in data["matches"]:
+                                  if isinstance(match, dict) and "trigger" in match:
+                                      triggers.append(str(match["trigger"]))
+                      except yaml.YAMLError:
+                          pass
+                  return sorted(triggers)
+
+              def main():
+                  if not directory.exists():
+                      print(f"[JGGENERAL] Match directory not found: {directory}")
+                      return
+                  file_path = directory / "general.yml"
+                  triggers = get_triggers(file_path)
+                  header = "=========JGGENERAL=========="
+                  if triggers:
+                      lines = [header, ""]
+                      lines.extend(f"- {t}" for t in triggers)
+                      lines.extend(["", "\u200b"])
+                      print("\n".join(lines))
+                  else:
+                      print(header + "\n\n[No triggers found]\n\n\u200b")
+
+              main()
+
+  - trigger: "jgyml"
+    label: "List YAML files"
+    replace: "{{jgyml_list}}"
+    vars:
+      - name: jgyml_list
+        type: script
+        params:
+          args:
+            - python3
+            - -c
+            - |
+              import os
+              import platform
+              from pathlib import Path
+
+              def find_match_dir():
+                  env_dir = os.environ.get("ESPANSO_MATCH_DIR")
+                  if env_dir:
+                      return Path(env_dir).expanduser()
+
+                  system = platform.system()
+                  home = Path.home()
+                  if system == "Windows":
+                      base = Path(os.environ.get("APPDATA", home / "AppData/Roaming"))
+                      return base / "espanso" / "match" / "user"
+                  if system == "Darwin":
+                      return home / "Library" / "Application Support" / "espanso" / "match" / "user"
+                  return Path(os.environ.get("XDG_CONFIG_HOME", home / ".config")) / "espanso" / "match" / "user"
+
+              directory = find_match_dir()
+
+              def get_yaml_files(directory):
+                  return sorted([os.path.splitext(f)[0] for f in os.listdir(directory) if f.endswith(".yml")])
+
+              def main():
+                  if not directory.exists():
+                      print(f"[JGYML] Match directory not found: {directory}")
+                      return
+                  files = get_yaml_files(directory)
+                  lines = ["=========JGYML==========", "", "YAML files:", ""]
+                  lines.extend(files)
+                  lines.extend(["", "\u200b"])
+                  print("\n".join(lines))
+
+              main()
+
+  - regex: "[Jj][Gg]_(?P<file>[A-Za-z0-9_]+)(\\.|\\s)"
+    label: "Show triggers + labels for YAML"
+    replace: "{{jg_file_triggers}}"
+    vars:
+      - name: jg_file_triggers
+        type: script
+        params:
+          args:
+            - python3
+            - -c
+            - |
+              import os
+              import platform
+              import yaml
+              from pathlib import Path
+
+              def find_match_dir():
+                  env_dir = os.environ.get("ESPANSO_MATCH_DIR")
+                  if env_dir:
+                      return Path(env_dir).expanduser()
+
+                  system = platform.system()
+                  home = Path.home()
+                  if system == "Windows":
+                      base = Path(os.environ.get("APPDATA", home / "AppData/Roaming"))
+                      return base / "espanso" / "match" / "user"
+                  if system == "Darwin":
+                      return home / "Library" / "Application Support" / "espanso" / "match" / "user"
+                  return Path(os.environ.get("XDG_CONFIG_HOME", home / ".config")) / "espanso" / "match" / "user"
+
+              directory = find_match_dir()
+
+              def get_entries(file_path):
+                  entries = []
+                  with open(file_path, "r", encoding="utf-8") as file:
+                      try:
+                          data = yaml.safe_load(file)
+                      except yaml.YAMLError:
+                          return entries
+
+                  if not isinstance(data, dict) or "matches" not in data:
+                      return entries
+
+                  for match in data["matches"]:
+                      if not isinstance(match, dict):
+                          continue
+
+                      label = str(match.get("label", "")).strip() or "[No label]"
+
+                      if "trigger" in match:
+                          entries.append((str(match["trigger"]), label))
+                          continue
+
+                      if "triggers" in match and isinstance(match["triggers"], list):
+                          for t in match["triggers"]:
+                              entries.append((str(t), label))
+                          continue
+
+                      if "regex" in match:
+                          entries.append((f"regex:{match['regex']}", label))
+
+                  entries.sort(key=lambda x: (x[0].lower(), x[1].lower()))
+                  return entries
+
+              def main():
+                  name = os.environ.get("ESPANSO_FILE", "").strip()
+                  if not name:
+                      print("[JG] No file name captured.")
+                      return
+
+                  if not directory.exists():
+                      print(f"[JG {name}] Match directory not found: {directory}")
+                      return
+
+                  mapping = {
+                      os.path.splitext(f)[0].lower(): f
+                      for f in os.listdir(directory)
+                      if f.endswith(".yml")
+                  }
+
+                  key = name.lower()
+                  filename = mapping.get(key)
+                  header = f"=========JG_{name}=========="
+
+                  if not filename:
+                      print(header + f"\n\n[File not found: {name}.yml]\n\n\u200b")
+                      return
+
+                  file_path = directory / filename
+
+                  entries = get_entries(file_path)
+                  if entries:
+                      lines = [header, filename, ""]
+                      lines.extend(f"{t} - {label}" for t, label in entries)
+                      lines.extend(["", "\u200b"])
+                      print("\n".join(lines))
+                  else:
+                      print(header + "\n\n[No triggers found]\n\n\u200b")
+
+              main()

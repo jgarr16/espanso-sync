@@ -1,0 +1,9 @@
+# Snippets for prompts in LLMs
+matches:
+
+  - trigger: "jgbrief"
+    label: "Brief summary instruction"
+    replace: "Write a very brief summary of the following for my daily log (shoot for 1 sentence, not long)"
+
+
+ 

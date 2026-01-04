@@ -1,0 +1,14 @@
+# Cybersecurity specific snippets (phrases and actions)
+matches:
+
+  - trigger: "jgconcur"
+    label: "Concur compliance line"
+    replace: " - Concur. This RBD has been reviewed for compliance to NSC action guidance."
+
+  - trigger: "jgpriority"
+    label: "POA&M priority reminder"
+    replace: "The Priority field for this POA&M is blank; please update the Priority and let me know once it's adjusted. If you are unable to update it 'in place', let me know and I'll return the POA&M."
+
+  - trigger: "jgssp"
+    label: "System Security Plan (SSP)"
+    replace: "System Security Plan (SSP)"

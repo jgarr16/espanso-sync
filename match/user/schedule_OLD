@@ -1,0 +1,136 @@
+matches:
+  - trigger: "jgdaily"
+    replace: "{{day_info}}"
+    vars:
+      - name: day_info
+        type: script
+        params:
+          args:
+            - "C:\\Users\\jrgarrig\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe"
+            - -c
+            - |
+              import datetime
+              import os
+              import re
+              import sys
+
+              # Set the console output encoding to UTF-8
+              sys.stdout.reconfigure(encoding='utf-8')
+
+              today = datetime.datetime.now()
+              date_str = today.strftime("%A, %Y-%m-%d")
+              
+              # Default schedule
+              start_time = "07:30"
+              lunch_start = "12:00"
+              lunch_end = "13:00"
+              end_time = "16:30"
+              hours = "8"
+              
+              # Day-specific information with multiple meeting entries
+              day_of_week = today.strftime("%A")
+
+              if day_of_week in ["Tuesday", "Thursday"]:
+                lunch_start = "13:00"
+                lunch_end = "14:00" 
+              
+              # Dictionary of meetings for each day
+              meetings = {
+                  "Monday": [
+                      "Meeting - IT Standup - reviewed mission freezes for this week and daily IT operational statuses.",
+                      "Meeting - Participated in ARC Weekly Executive Committee meeting, focused on ORBIT, Executive Orders, and operational statuses across the center.",
+                      "Meeting - Chaired weekly staff meeting for ARC CCIO - covered operational updates, highlighting ----"
+                  ],
+                  "Tuesday": [
+                      "Meeting - IT Standup - reviewed mission freezes for this week and daily IT operational statuses.",
+                      "Meeting - IT Operations Board - focused on ----.",
+                      "Meeting - IT Management Board - focused on ----.",
+                      "Meeting - CIO Staff Meeting - collaborated with OCIO leadership on multiple data calls and quick responses to various strategic events as a result of Executive Orders, DOGE requests for info, OPM and Federal CIO guidance that are being received by the agency.",
+                      "Meeting - Strategy Division Staff Meeting - focused on enterprise effects of DRP/RIF and the fallout impacting Center CIO organizations."
+                  ],
+                  "Wednesday": [
+                      "Meeting - IT Standup - reviewed mission freezes for this week and daily IT operational statuses.",
+                      "Meeting - Center CIO Community - focused on a wide range of strategic and operational issues that impact our community (ARRP responses, reorg/unMAP issues, Intune Supervisor Mode, Website admin mode).",
+                      "Meeting - Leadership Integration Forum - focused on ----."
+                  ],
+                  "Thursday": [
+                      "Meeting - IT Standup - reviewed mission freezes for this week and daily IT operational statuses."
+                  ],
+                  "Friday": [
+                      "Meeting - Weekly coordination session with Bill Notley, Deputy CIO, to strategize on local issues.",
+                      "Meeting - Chaired bi-weekly staff meeting for ARC CCIO civil servants - highlighting ----."
+                  ],
+                  "Saturday": [],
+                  "Sunday": []
+              }
+              
+              # Get meetings for today or use empty list if none
+              today_meetings = meetings.get(day_of_week, [])
+              if not today_meetings:
+                  today_meetings = ["No scheduled meetings today."]
+              
+              # Function to find ToDo items from only the most recent day entry
+              def get_todo_items_from_file():
+                  # Specify the exact path to your note file with double backslashes
+                  note_file = "C:\\Users\\jrgarrig\\Documents\\Obsidian Vault\\review.md"
+                  
+                  try:
+                      # Read the file content
+                      with open(note_file, 'r', encoding='utf-8') as file:
+                          content = file.read()
+                      
+                      # Find the first day entry (most recent)
+                      # Look for a date pattern like "Monday, 2025-04-28"
+                      day_pattern = r'\w+, \d{4}-\d{2}-\d{2}'
+                      day_matches = re.finditer(day_pattern, content)
+                      
+                      # Get the positions of the first two day headers
+                      positions = []
+                      for match in day_matches:
+                          positions.append(match.start())
+                          if len(positions) >= 2:
+                              break
+                      
+                      # If we found at least one day header
+                      if positions:
+                          # Extract the content of the most recent day
+                          if len(positions) >= 2:
+                              # From first day header to second day header
+                              most_recent_day = content[positions[0]:positions[1]]
+                          else:
+                              # From first day header to end of file
+                              most_recent_day = content[positions[0]:]
+                          
+                          # Find all lines containing "ToDo -" in the most recent day
+                          # and ignore lines starting with "SBI - "
+                          todo_items = []
+                          for line in most_recent_day.split('\n'):
+                              if re.search(r'todo - ', line.strip(), re.IGNORECASE) and not line.strip().startswith("SBI - "):
+                                  todo_items.append(line.strip())
+                          
+                          return todo_items
+                      
+                      return []
+                  except Exception as e:
+                      # If there's any error, return an empty list
+                      return []
+
+              # Get ToDo items from the most recent day entry
+              todo_items = get_todo_items_from_file()
+              
+              # Format the basic output
+              output = f"{date_str}\n{start_time} - {lunch_start} - {lunch_end} - {end_time} ({hours})\nCybersecurity - RISCS - 0"
+              
+              # Add ToDo items right after the basic info
+              for todo in todo_items:
+                  output += f"\n{todo}"
+              
+              # Add each meeting on a new line after ToDo items
+              for meeting in today_meetings:
+                  output += f"\n{meeting}"
+              
+              # Print the output, handling potential encoding issues
+              try:
+                  print(output)
+              except UnicodeEncodeError:
+                  print(output.encode('utf-8', errors='ignore').decode('utf-8'))

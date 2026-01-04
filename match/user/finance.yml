@@ -1,0 +1,6 @@
+# Cybersecurity specific snippets (phrases and actions)
+matches:
+
+  - trigger: jgpl
+    label: "ProjectionLab"
+    replace: ProjectionLab

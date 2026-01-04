@@ -1,0 +1,190 @@
+# Contact information snippets, including email lists and personal contacts
+matches:
+
+  # Email Distribution Lists (originally from Cybersecurity section)
+  - trigger: "jg3232"
+    label: "Email distro list (jg3232)"
+    replace: "ted.a.manning@nasa.gov; donovan.mathias@nasa.gov;katsutoshi.c.ishisoko@nasa.gov;neil.fernandes@nasa.gov"
+
+  - trigger: "jg3234"
+    label: "Email distro list (jg3234)"
+    replace: "justin.pane@nasa.gov; john.j.kemp@nasa.gov; zachary.burkland@nasa.gov"
+
+  - trigger: "jg3236"
+    label: "Email distro list (jg3236)"
+    replace: "wenchian.lee@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov; brandon.s.sanders@nasa.gov"
+
+  - trigger: "jg3238"
+    label: "Email distro list (jg3238)"
+    replace: "wenchian.lee@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov; brandon.s.sanders@nasa.gov"
+
+  - trigger: "jg3239"
+    label: "Email distro list (jg3239)"
+    replace: "james.h.bell@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov; brandon.s.sanders@nasa.gov"
+
+  - trigger: "jg3242"
+    label: "Email distro list (jg3242)"
+    replace: "tara.samuels@nasa.gov; christine.r.chase@nasa.gov; christopher.s.perry@nasa.gov"
+
+  - trigger: "jg3245"
+    label: "Email distro list (jg3245)"
+    replace: "becky.l.hooey@nasa.gov; erci.c.stern@nasa.gov"
+
+  - trigger: "jg3246"
+    label: "Email distro list (jg3246)"
+    replace: "david.b.hash@nasa.gov; austin.p.decker@nasa.gov; daniel.d.lehr@nasa.gov"
+
+  - trigger: "jg3247"
+    label: "Email distro list (jg3247)"
+    replace: "scott.g.eddlemon@nasa.gov; daniel.d.lehr@nasa.gov"
+
+  - trigger: "jg3248"
+    label: "Email distro list (jg3248)"
+    replace: "scott.g.eddlemon@nasa.gov; daniel.d.lehr@nasa.gov"
+
+  - trigger: "jg3249"
+    label: "Email distro list (jg3249)"
+    replace: "scott.poll@nasa.gov; costandi.m.wahhab@nasa.gov; julie.matsuda@nasa.gov"
+
+  - trigger: "jg3329"
+    label: "Email distro list (jg3329)"
+    replace: "julie.matsuda@nasa.gov; joel.lachter@nasa.gov; phillip.g.mertz@nasa.gov; costandi.m.wahhab@nasa.gov"
+
+  - trigger: "jg3597"
+    label: "Email distro list (jg3597)"
+    replace: "justin.hopkins@nasa.gov; don.m.beddell@nasa.gov; austin.p.decker@nasa.gov"
+
+  - trigger: "jg3603"
+    label: "Email distro list (jg3603)"
+    replace: "wenchian.lee@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov"
+
+  - trigger: "jg4479"
+    label: "Email distro list (jg4479)"
+    replace: "thomas.c.paine@nasa.gov; joseph.p.olsen@nasa.gov; annette.randall@nasa.gov"
+
+  - trigger: "jg4521"
+    label: "Email distro list (jg4521)"
+    replace: "wenchian.lee@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov; brandon.s.sanders@nasa.gov"
+
+  - trigger: "jg4586"
+    label: "Email distro list (jg4586)"
+    replace: "kevin.mcmillin@nasa.gov; julie.matsuda@nasa.gov"
+
+  - trigger: "jg4615"
+    label: "Email distro list (jg4615)"
+    replace: "zachary.s.roberts@nasa.gov; kenneth.freeman-1@nasa.gov; gina.medina@nasa.gov"
+
+  - trigger: "jg5509"
+    label: "Email distro list (jg5509)"
+    replace: "thomas.c.paine@nasa.gov; joseph.p.olsen@nasa.gov; annette.randall@nasa.gov"
+
+  - trigger: "jg5510"
+    label: "Email distro list (jg5510)"
+    replace: "thomas.c.paine@nasa.gov; joseph.p.olsen@nasa.gov; annette.randall@nasa.gov; christine.r.chase@nasa.gov"
+
+  - trigger: "jg5511"
+    label: "Email distro list (jg5511)"
+    replace: "thomas.c.paine@nasa.gov; joseph.p.olsen@nasa.gov; annette.randall@nasa.gov; christine.r.chase@nasa.gov"
+
+  - trigger: "jgISOISSO"
+    label: "Combined ISO/ISSO distro list"
+    replace: "{{jg3232}};{{jg3234}};{{jg3236}};{{jg3238}};{{jg3239}};{{jg3242}};{{jg3245}};{{jg3246}};{{jg3247}};{{jg3248}};{{jg3249}};{{jg3329}};{{jg3597}};{{jg3603}};{{jg4479}};{{jg4521}};{{jg4586}};{{jg4615}};{{jg5509}};{{jg5510}};{{jg5511}}"
+    vars:
+      - name: jg3232
+        type: match
+        params:
+          trigger: "jg3232"
+      - name: jg3234
+        type: match
+        params:
+          trigger: "jg3234"
+      - name: jg3236
+        type: match
+        params:
+          trigger: "jg3236"
+      - name: jg3238
+        type: match
+        params:
+          trigger: "jg3238"
+      - name: jg3239
+        type: match
+        params:
+          trigger: "jg3239"
+      - name: jg3242
+        type: match
+        params:
+          trigger: "jg3242"
+      - name: jg3245
+        type: match
+        params:
+          trigger: "jg3245"
+      - name: jg3246
+        type: match
+        params:
+          trigger: "jg3246"
+      - name: jg3247
+        type: match
+        params:
+          trigger: "jg3247"
+      - name: jg3248
+        type: match
+        params:
+          trigger: "jg3248"
+      - name: jg3249
+        type: match
+        params:
+          trigger: "jg3249"
+      - name: jg3329
+        type: match
+        params:
+          trigger: "jg3329"
+      - name: jg3597
+        type: match
+        params:
+          trigger: "jg3597"
+      - name: jg3603
+        type: match
+        params:
+          trigger: "jg3603"
+      - name: jg4479
+        type: match
+        params:
+          trigger: "jg4479"
+      - name: jg4521
+        type: match
+        params:
+          trigger: "jg4521"
+      - name: jg4586
+        type: match
+        params:
+          trigger: "jg4586"
+      - name: jg4615
+        type: match
+        params:
+          trigger: "jg4615"
+      - name: jg5509
+        type: match
+        params:
+          trigger: "jg5509"
+      - name: jg5510
+        type: match
+        params:
+          trigger: "jg5510"
+      - name: jg5511
+        type: match
+        params:
+          trigger: "jg5511"
+
+  # Personal contact details (to be moved from general.yml)
+  # Will be added in a subsequent subtask modification to this file.
+  - trigger: jgcell
+    label: "Insert (650) 390-5537"
+    replace: "(650) 390-5537"
+
+  - trigger: jgoffice
+    label: "Insert (650) 604-1550"
+    replace: "(650) 604-1550"
+
+  - trigger: jgemail
+    label: "Insert NASA email address"
+    replace: "john.r.garrigues@nasa.gov"

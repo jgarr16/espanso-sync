@@ -1,0 +1,140 @@
+# Snippets for inserting images and emojis
+matches:
+
+  # Images
+  - trigger: "jgbeer"
+    label: "Insert image HTML tag (Da Bomb)"
+    replace: '<img src="C:\\Users\\jrgarrig\\OneDrive - NASA\\pics\\icons\\nuke.png" width="200" height="200" alt="Da Bomb">'
+
+  - trigger: "jgnnn"
+    label: "Insert image HTML tag (NASA logo)"
+    replace: '<img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" width="110" height="92">'
+
+  - trigger: jgnasa
+    label: "Paste NASA icon image"
+    image_path: "/Users/jrgarrigues/Library/Application Support/espanso/match/user/images/nasa-6-32.png"
+    image: true
+
+  - trigger: "jgastronaut"
+    label: "🧑‍🚀"
+    replace: "🧑‍🚀 "
+
+  - trigger: "jgcheck"
+    label: "✅"
+    replace: "✅"
+
+  - trigger: "jgdunno"
+    label: "🤷‍♂️"
+    replace: "🤷‍♂️"
+
+  - trigger: "jglove"
+    label: "❤️"
+    replace: "❤️"
+
+  - trigger: "jgno"
+    label: "⛔"
+    replace: "⛔"
+
+  - trigger: "jgrocket"
+    label: "🚀"
+    replace: "🚀"
+    
+  - trigger: "jgrun"
+    label: "🏃"
+    replace: "🏃"
+
+  - trigger: jgsad
+    label: "😢"
+    replace: "😢"
+
+  - trigger: "jgshh"
+    label: "🤫"
+    replace: "🤫"
+
+  - trigger: "jgsmile"
+    label: "😊"
+    replace: "😊"
+
+  - trigger: "jgthumbsup"
+    label: "👍"
+    replace: "👍"
+
+  - trigger: "jgyes"
+    label: "✅"
+    replace: "✅"
+
+  - trigger: jgfingers
+    label: "🤞"
+    replace: "🤞"
+
+  - trigger: "jgmeatball"
+    label: "Copy NASA meatball image to clipboard"
+    replace: "{{emoji_to_clipboard}}"
+    vars:
+      - name: emoji_to_clipboard
+        type: script
+        params:
+          args:
+            - "C:\\Users\\jrgarrig\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe"
+            - -c
+            - |
+              import io
+              import sys
+              import tempfile
+              import os
+              import urllib.request
+              from PIL import Image
+              import win32clipboard
+              
+              def is_url(path):
+                  return path.startswith(('http://', 'https://'))
+              
+              def send_to_clipboard(image_path):
+                  # If the path is a URL, download it first
+                  temp_file_path = None # Initialize to ensure it's defined
+                  if is_url(image_path):
+                      try:
+                          # Create a temporary file
+                          temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
+                          temp_file.close()
+                          temp_file_path = temp_file.name # Store the path
+                          
+                          # Download the image
+                          urllib.request.urlretrieve(image_path, temp_file_path)
+                          
+                          # Use the temp file path
+                          image_path_to_process = temp_file_path
+                      except Exception as e:
+                          print(f"Error downloading image: {e}", file=sys.stderr)
+                          if temp_file_path and os.path.exists(temp_file_path):
+                              os.unlink(temp_file_path) # Clean up if download failed
+                          return
+                  else:
+                      image_path_to_process = image_path
+                  
+                  try:
+                      # Open and process the image
+                      image = Image.open(image_path_to_process)
+                      output = io.BytesIO()
+                      image.convert("RGB").save(output, "BMP")
+                      data = output.getvalue()[14:]  # The file header offset of BMP is 14 bytes
+                      output.close()
+                      
+                      # Set to clipboard
+                      win32clipboard.OpenClipboard()
+                      win32clipboard.EmptyClipboard()
+                      win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
+                      win32clipboard.CloseClipboard()
+                      
+                      print("", end="")  # Return empty string so Espanso doesn't replace with text
+                  except Exception as e:
+                      print(f"Error processing image: {e}", file=sys.stderr)
+                  finally:
+                      # Clean up temp file if we created one (i.e., if it was a URL)
+                      if temp_file_path and os.path.exists(temp_file_path):
+                          os.unlink(temp_file_path)
+              
+              # You can use either a local file path or a URL
+              # send_to_clipboard("https://www.nasa.gov/wp-content/uploads/2023/04/nasa-logo-web-rgb.png")
+              # Or use a local file:
+              send_to_clipboard("C:\\Users\\jrgarrig\\OneDrive - NASA\\pics\\icons\\meatball_emoji.png")

@@ -1,0 +1,89 @@
+# General purpose snippets
+matches:
+
+  # straight up replacements
+  - trigger: jgabout
+    label: "About John blurb"
+    replace: "Perpetual tinkerer, Python hobbyist, JavaScript muddler, Swift wannabe, and semi-automator of all kinds of things!"
+
+  - trigger: jgaccomp
+    label: "- [ ] accomp:"
+    replace: "- [ ] accomp: "
+
+  - trigger: jgahk
+    label: "AutoHotkey"
+    replace: "AutoHotkey"
+
+  - trigger: jgalg
+    label: "Algebra practice prompt"
+    replace: "Create a series of algebra questions that can test me for my algebra knowledge. Make the questions start off easy, and slowly grow in difficulty and complexity. Continue providing these exercise questions until I tell you to stop. Do not ask me if I would like to try another question after each exercise question, just provide another one automatically. Only give an explanation of the problem and answer if I respond with an incorrect answer; otherwise just ask the next question. Start every new question off with a count of the number of questions (so I can keep up with how many questions I have left until my hourly quota has been reached); this represents Question #1. Show me Question #2 next."
+
+  - trigger: jgauto
+    label: "Autocorrect joke"
+    replace: "I hate autocorrect (NOT-o-correct)!"
+
+  - trigger: jgburner
+    label: "Burner phone number"
+    replace: "(650) 389-9971"
+
+  - trigger: jgcell
+    label: "Cell phone number"
+    replace: "(650) 390-5537"
+
+  - trigger: jgchill
+    label: "Not urgent tag"
+    replace: "[not urgent]"
+
+  - trigger: jgconsistent
+    label: "Work categories blurb"
+    replace: "There are four main categories of work performed in our organization. 1) Business Management comprises the managerial requirements for the organization. Example subprocesses include Administrative Functions, Governance, Project Management, IT Architecture, Risk Management, Performance Management, Contract Management, and Resource Management. 2) Customer Engagement comprises all of the customer-facing activities (and is the primary reason for our organzation's existence). Example subprocesses include Business Relationship Management, Customer Relationship Management, Outreach and Communications, Center MOU Management, and Print Services. 3) Service Integration comprises activities that integrate IT services to our customers' organizations - this is often the provision of services that are derived from the Customer Engagement area. Example subprocesses include Technical and Mission Integration, IT Asset Management, and Software Licensing. 4) Center-Delivered Services comprise unique services that are provided to our local constituents. Example subprocesses include Authorizing Official Designated Representative (AODR), Permit and Tenant IT Review Board, Customer Agreements & MOUs, Center CIO Facilities Coordination, Land Mobile Radio (LMR) & Multimedia Services, Spectrum Management Services, Communications Security (ComSec), Property Management, and Emergency Response Management activities."
+
+  - trigger: jgdodid
+    label: "DoD ID number"
+    replace: "1133876118"
+
+  - trigger: jgechi
+    label: "Insert echi handle"
+    replace: 3ch1n0d3rm@t@
+
+  - trigger: jgeng
+    label: "Prompt to translate to English"
+    replace: "Translate the following to English (only give the translation, and don't use quotation marks): "
+
+  - trigger: jggarrigai
+    label: "PC specs block"
+    replace: |
+      Processor: AMD Ryzen 9 7950X3D 16-Core Processor  
+      RAM: 128 GB 
+      GPU: Two NVIDIA GeForce RTX-4090 (watercooled) 
+      Storage: Two Samsung SSD 990 Pro 4TB drives (watercooled) 
+
+  - trigger: jggpt
+    label: "Expand GPT"
+    replace: "Generative Pre-Trained Transformer (GPT)"
+
+  - trigger: jgharu
+    label: "하루 한 단어:"
+    replace: "하루 한 단어:"
+
+  - trigger: jghny
+    label: "Happy New Year message"
+    replace: "Happy New Year; here's hoping that {{ny_year}} is better for all!"
+    vars:
+      - name: ny_year
+        type: date
+        params:
+          format: "%Y"
+          offset: "1m"
+
+  - trigger: jghome
+    label: "Mailing address"
+    replace: |
+      716 Macon Dr.  
+      Mountain View, CA 94043
+
+  - trigger: jgrent
+    label: "Rental inquiry bullets"
+    replace: "Hello ___ - My wife and I are interested in your property for late Jan/early Feb move-in. I'm a NASA civil servant relocating from California to Austin as a temporary base before an international move to South Korea. Seeking a 6-month lease with month-to-month flexibility thereafter. I have excellent references, stable government income, and two quiet cats. I'll be in Austin Jan 7-8 for house hunting and would love to schedule a viewing if this arrangement works for you and the owner. Thanks, John Garrigues"
+
+  

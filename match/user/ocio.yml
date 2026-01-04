@@ -1,0 +1,59 @@
+# OCIO specific snippets
+matches:
+
+  # straight up replacements
+  - trigger: jgnats
+    label: "Expand NaTS"
+    replace: "Network and Telecommunications Services (NaTS)"
+
+  - trigger: jgwcs
+    label: "Workplace & Collaboration Services (WCS)"
+    replace: "Workplace & Collaboration Services (WCS)"
+
+  - trigger: jgicam
+    label: "Expand ICAM"
+    replace: "Identity, Credential, and Access Management (ICAM)"
+
+  - trigger: jgidas
+    label: "Expand IDAS"
+    replace: "Information, Data, & Analytics Services (IDAS)"
+
+  - trigger: jgaps
+    label: "Application and Platform Services (APS)"
+    replace: "Application and Platform Services (APS)"
+
+  - trigger: jgits
+    label: "Information Technology Services (ITS)"
+    replace: "Information Technology Services (ITS)"
+
+  - trigger: jgitsm
+    label: "IT Service Management (ITSM)"
+    replace: "IT Service Management (ITSM)"
+
+  - trigger: jgocio
+    label: "Expand OCIO"
+    replace: "Office of the Chief Information Officer (OCIO)"
+
+  - trigger: jgarc
+    label: "Ames Research Center (ARC)"
+    replace: "Ames Research Center (ARC)"
+
+  - trigger: jgnasa
+    label: "Expand NASA"
+    replace: "National Aeronautics and Space Administration (NASA)"
+
+  - trigger: jggsfc
+    label: "Goddard Space Flight Center (GSFC)"
+    replace: "Goddard Space Flight Center (GSFC)"
+
+  - trigger: jgjpl
+    label: "Jet Propulsion Laboratory (JPL)"
+    replace: "Jet Propulsion Laboratory (JPL)"
+
+  - trigger: jglarc
+    label: "Langley Research Center (LaRC)"
+    replace: "Langley Research Center (LaRC)"
+
+  - trigger: jgmoffett
+    label: "Moffett Field, CA 94035"
+    replace: "Moffett Field, CA 94035"

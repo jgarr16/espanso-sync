@@ -1,0 +1,37 @@
+# Snippets related to AI tools and guidance
+matches:
+
+  - trigger: "jglc"
+    label: "LibreChat"
+    replace: "LibreChat"
+
+  - trigger: "jgchatGSFC"
+    label: "Insert ChatGSFC blurb"
+    replace: |
+      Have you checked out ChatGSFC yet? This is a technology demonstration that serves as a great example of the kind of GenAI tools that NASA is developing. Check out the 4-minute video on their SharePoint site at https://nasa.sharepoint.com/sites/AIML/SitePages/new.aspx. 
+      
+      High-level - it's a mult-model tool (e.g., Anthropic Claude, and OpenAI ChatGPT) that uses a really nice web interface. It's more like what you might be used to with proprietary products like ChatGPT, but it works with internal, non-ITAR/EAR/PII data. 
+      
+      ChatGSFC is available on a time-limited trial. If you are interested, you can submit a NAMS request: https://idmax.nasa.gov/nams/asset/270307 (they normally provision access very quickly). 
+      
+      Check it out and let me know what you think. 
+
+  - trigger: "jggenai"
+    label: "Insert NASA GenAI guidance link"
+    replace: "NASA's guidance on the use of GenAI is located at https://nasa.sharepoint.com/sites/cio/SitePages/Use-of-Generative-AI.aspx. The document is a little dated, but still pertinent; a revision is currently in the works."
+
+  - trigger: "jgbrief"
+    label: "Prompt for brief summary"
+    replace: "Write a very brief summary of the following for my daily log (shoot for 1 sentence, not long)"
+
+  - trigger: jgaccomplishments
+    label: "Prompt for accomplishments bullet"
+    replace: "Summarize the following content into a bullet that I can include in my weekly accomplishments submission. Keep it short and sweet."
+
+  - trigger: jgcommo
+    label: "Prompt for courteous reply draft"
+    replace: "I want to say something to the effect of the following but I don't want you to use my words; I want you to use your own words to relay the intent of my message in a courteous and professional manner. Below is a communication string - help me craft my response:"
+
+  - trigger: jgimprove
+    label: "Prompt to improve drafted response"
+    replace: "Help me respond to this message. Use my following intent as a guide to craft a response that conveys the following idea in your words (don't just repeat my words; make them better): "

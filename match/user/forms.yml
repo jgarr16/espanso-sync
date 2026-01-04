@@ -1,0 +1,95 @@
+# Snippets that trigger forms
+matches:
+
+  - triggers: 
+    - "SBI - "
+    - "sbi - "
+    - jgsbi
+    label: "SBI feedback line"
+    replace: |
+      SBI - {{form.employee}} | {{form.feedback}} | Situation: {{form.situation}} | Behavior: {{form.behavior}} | Impact: {{form.impact}}
+    vars:
+      - name: form
+        type: form
+        params:
+          layout: |
+            Employee Name:
+            [[employee]]
+            Feedback Type:
+            [[feedback]]
+            Situation:
+            [[situation]]
+            Behavior:
+            [[behavior]]
+            Impact:
+            [[impact]]
+          fields:
+            employee:
+              type: choice
+              values:
+                - Bill
+                - Christine
+                - Gulsum
+                - John S.
+                - Justin G.
+                - Justin H.
+                - Kirsten
+                - Michael
+            feedback:
+              type: choice
+              values:
+                - Positive
+                - Negative
+            situation:
+              type: text
+              multiline: true
+              default: "In a meeting "
+            behavior:
+              type: text
+              multiline: true
+              default: "Employee was helpful"
+            impact:
+              type: text
+              multiline: true
+              default: "Employee made everyone feel welcome"
+
+  - triggers: 
+    - "jgunused"
+    label: "Unused mobile device notice"
+    replace: |
+      OCIO is conducting an urgent, agency-wide review of mobile phones and hotspots to reduce costs, as directed by DOGE.
+
+      Your device(s) listed below have shown no usage (calls or data) in the last 30 days or more:
+
+      - {{form.device1}}
+      - {{form.additionalDevices}}
+
+      Please reply to this message by {{form.deadline}} and let us know:
+
+      1. If you are still actively using this device(s).
+      2. If you are NOT using it, please confirm so we can desubscribe the service.
+      3. If you ARE using it (or wish to keep it despite low/no recent usage), please provide a brief justification for its continued operational need.
+
+      IMPORTANT: Due to the very short deadline for this agency-wide effort, your prompt response is crucial. If we do not receive a response, we may initiate immediate service termination for the listed device(s).
+    vars:
+      - name: form
+        type: form
+        params:
+          layout: |
+            Device 1:
+            [[device1]]
+            Additional Devices (one per line):
+            [[additionalDevices]]
+            Response Deadline:
+            [[deadline]]
+          fields:
+            device1:
+              type: text
+              default: "[Device Name/Number - e.g., iPhone 12, Verizon MiFi XYZ]"
+            additionalDevices:
+              type: text
+              multiline: true
+              default: ""
+            deadline:
+              type: text
+              default: "12 Noon on Wednesday, June 4th"

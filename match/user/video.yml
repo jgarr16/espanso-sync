@@ -1,0 +1,9 @@
+# Snippets related to capturing and tweaking video segments
+matches:
+
+  - trigger: jgfindvideo
+    label: "Extract og:video URL (JS snippet)"
+    replace: document.querySelector('meta[property="og:video:url"]')?.content
+
+
+

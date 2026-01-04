@@ -1,0 +1,270 @@
+matches:
+  - trigger: "jgdaily"
+    label: "Daily log template (meetings + todos)"
+    replace: "{{day_info}}"
+    vars:
+      - name: day_info
+        type: script
+        params:
+          args:
+            - "C:\\Users\\jrgarrig\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe"
+            - -c
+            - |
+              import datetime
+              import os
+              import re
+              import sys
+
+              # Set the console output encoding to UTF-8
+              sys.stdout.reconfigure(encoding='utf-8')
+
+              today = datetime.datetime.now()
+              date_str = today.strftime("%A, %Y-%m-%d")
+              
+              # Default schedule
+              start_time = "09:30"
+              lunch_start = "12:30"
+              lunch_end = "13:00"
+              end_time = "18:00"
+              hours = "8"
+              
+              # Day-specific information with multiple meeting entries
+              day_of_week = today.strftime("%A")
+
+              if day_of_week in ["Tuesday", "Thursday"]:
+                lunch_start = "12:35"
+                lunch_end = "13:05" 
+              
+              # Dictionary of meetings for each day
+              meetings = {
+                  "Monday": [
+                  "Meeting - Participated in ARC Weekly Executive Committee meeting, focused on ORBIT, Executive Orders, and operational statuses across the center.",
+                      "Meeting - Chaired weekly staff meeting for ARC CCIO - covered operational updates, highlighting ----"
+                  ],
+                  "Tuesday": [
+                      "Meeting - IT Management Board - focused on ----.",
+                      "Meeting - CIO Staff Meeting - collaborated with OCIO leadership on multiple data calls and quick responses to various strategic events as a result of Executive Orders, DOGE requests for info, OPM and Federal CIO guidance that are being received by the agency."
+                  ],
+                  "Wednesday": [
+                      "Meeting - Center CIO Community - focused on a wide range of strategic and operational issues that impact our community (ARRP responses, reorg/unMAP issues, Intune Supervisor Mode, Website admin mode).",
+                      "Meeting - Leadership Integration Forum - focused on ----."
+                  ],
+                  "Thursday": [
+                      "Meeting - IT Standup - reviewed mission freezes for this week and daily IT operational statuses."
+                  ],
+                  "Friday": [
+                      "Meeting - Weekly coordination session with Bill Notley, Deputy CIO, to strategize on local issues."
+                  ],
+                  "Saturday": [],
+                  "Sunday": []
+              }
+              
+              # Get meetings for today or use empty list if none
+              today_meetings = meetings.get(day_of_week, [])
+              if not today_meetings:
+                  today_meetings = ["No scheduled meetings today."]
+              
+              # Function to find ToDo items from only the most recent day entry
+              def get_todo_items_from_file():
+                  # Specify the exact path to your note file with double backslashes
+                  note_file = "C:\\Users\\jrgarrig\\Documents\\Obsidian Vault\\review_jun_to_sep.md"
+                  
+                  try:
+                      # Read the file content
+                      with open(note_file, 'r', encoding='utf-8') as file:
+                          content = file.read()
+                      
+                      # Find the first day entry (most recent)
+                      # Look for a date pattern like "Monday, 2025-04-28"
+                      day_pattern = r'\w+, \d{4}-\d{2}-\d{2}'
+                      day_matches = re.finditer(day_pattern, content)
+                      
+                      # Get the positions of the first two day headers
+                      positions = []
+                      for match in day_matches:
+                          positions.append(match.start())
+                          if len(positions) >= 2:
+                              break
+                      
+                      # If we found at least one day header
+                      if positions:
+                          # Extract the content of the most recent day
+                          if len(positions) >= 2:
+                              # From first day header to second day header
+                              most_recent_day = content[positions[0]:positions[1]]
+                              second_day_start = positions[1]
+                          else:
+                              # From first day header to end of file
+                              most_recent_day = content[positions[0]:]
+                              second_day_start = None
+                          
+                          # Find all lines containing "ToDo -" in the most recent day
+                          # and ignore lines starting with "SBI - "
+                          todo_items = []
+                          todo_line_indices = []
+                          
+                          lines = most_recent_day.split('\n')
+                          for i, line in enumerate(lines):
+                              # Check if it's a ToDo line and not already struck through
+                              if (re.search(r'todo - ', line.strip(), re.IGNORECASE) and 
+                                  not line.strip().startswith("SBI - ") and
+                                  not (line.strip().startswith("~~") and line.strip().endswith("~~"))):
+                                  # Store the original line without strike-through for the new day
+                                  todo_items.append(line.strip())
+                                  todo_line_indices.append(i)
+                          
+                          # If we found ToDo items, convert them to strike-through in the original content
+                          if todo_items and positions:
+                              # Convert ToDo lines to strike-through format
+                              for i in todo_line_indices:
+                                  # Add strike-through markdown (~~) around the line if not already there
+                                  if not lines[i].strip().startswith("~~") and not lines[i].strip().endswith("~~"):
+                                      lines[i] = "~~" + lines[i] + "~~"
+                              
+                              # Reconstruct the most recent day with strike-through ToDo items
+                              modified_most_recent_day = '\n'.join(lines)
+                              
+                              # Reconstruct the full content
+                              if second_day_start:
+                                  new_content = content[:positions[0]] + modified_most_recent_day + content[second_day_start:]
+                              else:
+                                  new_content = content[:positions[0]] + modified_most_recent_day
+                              
+                              # Write the updated content back to the file
+                              with open(note_file, 'w', encoding='utf-8') as file:
+                                  file.write(new_content)
+                          
+                          return todo_items
+                      
+                      return []
+                  except Exception as e:
+                      # If there's any error, return an empty list
+                      return []
+
+              # Get ToDo items from the most recent day entry
+              todo_items = get_todo_items_from_file()
+              
+              # Format the output without any backspace characters
+              output = f"{date_str}\n{start_time} - {lunch_start} - {lunch_end} - {end_time} ({hours})\nCybersecurity - RISCS - 0"
+              
+              # Add ToDo items right after the basic info
+              for todo in todo_items:
+                  output += f"\n{todo}"
+              
+              # Add each meeting on a new line after ToDo items
+              for meeting in today_meetings:
+                  output += f"\n{meeting}"
+              
+              # Print the output, handling potential encoding issues
+              try:
+                  print(output)
+              except UnicodeEncodeError:
+                  print(output.encode('utf-8', errors='ignore').decode('utf-8'))
+
+  - trigger: "jgshutdown"
+    label: "Shutdown log template (strike todos)"
+    replace: "{{shutdown_info}}"
+    vars:
+      - name: shutdown_info
+        type: script
+        params:
+          args:
+            - "C:\\Users\\jrgarrig\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe"
+            - -c
+            - |
+              import datetime
+              import re
+              import sys
+
+              # Ensure UTF-8 output
+              sys.stdout.reconfigure(encoding='utf-8')
+
+              today = datetime.datetime.now()
+              date_str = today.strftime("%A, %Y-%m-%d")
+
+              # Fixed schedule (same every day)
+              start_time = "05:45"
+              end_time = "07:15"
+              hours = "1.5"
+
+              # Consistent shutdown lines (same every day)
+              shutdown_lines = [
+                  "Customer engagement – On-call during furlough; fielded management IT inquiries, provided guidance/workarounds, triaged/escalated issues, coordinated status, and documented actions.",
+                  "Meeting - CSM Shutdown Coordination - met with OCIO senior leadership to review current status and requirements across the enterprise.",
+                  "Meeting - Center EC Shutdown Coordination - met with the ARC Executive Committee to review current status and requirements across the center.",
+                  "Status check - reviewed systems availability and scanned email for pertinent messages and appropriate actions.",
+                  "Shutdown activity - secured applications and locked workstation."
+              ]
+
+              def get_todo_items_from_file():
+                  note_file = "C:\\Users\\jrgarrig\\Documents\\Obsidian Vault\\review_jun_to_sep.md"
+                  try:
+                      with open(note_file, 'r', encoding='utf-8') as file:
+                          content = file.read()
+
+                      # Most recent day section (between first and second date headers)
+                      day_pattern = r'\w+, \d{4}-\d{2}-\d{2}'
+                      day_matches = re.finditer(day_pattern, content)
+
+                      positions = []
+                      for match in day_matches:
+                          positions.append(match.start())
+                          if len(positions) >= 2:
+                              break
+
+                      if positions:
+                          if len(positions) >= 2:
+                              most_recent_day = content[positions[0]:positions[1]]
+                              second_day_start = positions[1]
+                          else:
+                              most_recent_day = content[positions[0]:]
+                              second_day_start = None
+
+                          todo_items = []
+                          todo_line_indices = []
+                          lines = most_recent_day.split('\n')
+
+                          for i, line in enumerate(lines):
+                              if (re.search(r'todo - ', line.strip(), re.IGNORECASE)
+                                  and not line.strip().startswith("SBI - ")
+                                  and not (line.strip().startswith("~~") and line.strip().endswith("~~"))):
+                                  todo_items.append(line.strip())
+                                  todo_line_indices.append(i)
+
+                          # Strike through ToDo lines we extracted
+                          if todo_items:
+                              for i in todo_line_indices:
+                                  if not lines[i].strip().startswith("~~") and not lines[i].strip().endswith("~~"):
+                                      lines[i] = "~~" + lines[i] + "~~"
+
+                              modified_most_recent_day = '\n'.join(lines)
+                              if second_day_start:
+                                  new_content = content[:positions[0]] + modified_most_recent_day + content[second_day_start:]
+                              else:
+                                  new_content = content[:positions[0]] + modified_most_recent_day
+
+                              with open(note_file, 'w', encoding='utf-8') as file:
+                                  file.write(new_content)
+
+                          return todo_items
+
+                      return []
+                  except Exception:
+                      return []
+
+              # Build output
+              todo_items = get_todo_items_from_file()
+              output = f"{date_str}\n{start_time} - {end_time} ({hours})\nCybersecurity - RISCS - 0"
+
+              # Include any ToDos from the most recent day
+              for todo in todo_items:
+                  output += f"\n{todo}"
+
+              # Add fixed shutdown checklist
+              for line in shutdown_lines:
+                  output += f"\n{line}"
+
+              try:
+                  print(output)
+              except UnicodeEncodeError:
+                  print(output.encode('utf-8', errors='ignore').decode('utf-8'))
