@@ -1,0 +1,17 @@
+# Snippets for Microsoft product names
+matches:
+
+  - trigger: "jgchatGSFC"
+    label: "Insert ChatGSFC blurb"
+    replace: |
+      Have you checked out ChatGSFC yet? This is a technology demonstration that serves as a great example of the kind of GenAI tools that NASA is developing. Check out the 4-minute video on their SharePoint site at https://nasa.sharepoint.com/sites/AIML/SitePages/new.aspx. 
+      
+      High-level - it's a mult-model tool (e.g., Anthropic Claude, and OpenAI ChatGPT) that uses a really nice web interface. It's more like what you might be used to with proprietary products like ChatGPT, but it works with internal, non-ITAR/EAR/PII data. 
+      
+      ChatGSFC is available on a time-limited trial. If you are interested, you can submit a NAMS request: https://idmax.nasa.gov/nams/asset/270307 (they normally provision access very quickly). 
+      
+      Check it out and let me know what you think. 
+
+  - trigger: "jggenai"
+    label: "Insert GenAI guidance link"
+    replace: "NASA's guidance on the use of GenAI is located at https://nasa.sharepoint.com/sites/cio/SitePages/Use-of-Generative-AI.aspx. The document is a little dated, but still pertinent; a revision is currently in the works."

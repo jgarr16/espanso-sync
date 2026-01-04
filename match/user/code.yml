@@ -1,0 +1,30 @@
+# Coding snippets
+matches:
+
+  # coding replacements
+  - trigger: jgslow
+    label: "LLM coding instructions"
+    replace: |
+          Important notes: 
+          •	Go slow. 
+          •	Don't overwhelm me with tons of instructions or repeated conversation about the same thing over and over again. 
+          •	I do not like it when you try to spell out everything all at once, especially considering that you tend to repeat yourself a lot when you do that. 
+          •	Keep conversations simple and only one step at a time. 
+          •	If I get behind or lost, I will ask you for clarification. 
+    
+  - trigger: jgconcise
+    label: "Concise Q&A instruction"
+    replace: |
+      Let's clear up a few questions I have. 
+      I'll ask them one-at-a-time. 
+      Give me concise responses; I'll ask if I need more detail.
+      Respond in strict one-step mode.
+      Rules you must follow:
+      	•	Give only one action per response.
+      	•	Do not explain why unless I explicitly ask.
+        •	Do not summarize, reassure, acknowledge, or restate what I already know.
+        •	Do not add context, previews, follow-ups, or 'next steps.'	
+        •	Use plain, literal instructions (click this, type this, press this).
+        •	Stop immediately after the instruction.
+      If a sanity check is required, state it in one short sentence, then give the action.
+      Assume I am looking at the screen and want minimum words, maximum precision.

@@ -1,0 +1,88 @@
+# Snippets for dynamic content like dates, times, and shell commands
+matches:
+
+  # Print the current date
+  - trigger: "jgdate"
+    label: "Today's date (YYYY-MM-DD)"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
+  # Print the current day
+  - trigger: "jgday"
+    label: "Day of week"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%A"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    label: "Run shell command (example)"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # Tomorrow
+  - trigger: "jgtomorrow"
+    label: "Tomorrow's date"
+    replace: "{{tomorrow}}"
+    vars:
+      - name: tomorrow
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: 86400
+
+  # Day after tomorrow
+  - trigger: "jgtomorrow2"
+    label: "Date after tomorrow"
+    replace: "{{day_after}}"
+    vars:
+      - name: day_after
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: 172800
+
+  # In a week
+  - trigger: "jginaweek"
+    label: "Date in a week"
+    replace: "{{inaweek}}"
+    vars:
+      - name: inaweek
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: 604800
+
+  # Yesterday
+  - trigger: "jgyesterday"
+    label: "Yesterday's date"
+    replace: "{{yesterday}}"
+    vars:
+      - name: yesterday
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: -86400
+
+  # Day before yesterday
+  - trigger: "jgyesterday2"
+    label: "Date before yesterday"
+    replace: "{{day_before}}"
+    vars:
+      - name: day_before
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: -172800
+

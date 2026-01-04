@@ -1,0 +1,663 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+
+  # straight up replacements
+
+  - trigger: cypress
+    replace: CyPrESS
+
+  - trigger: chatgsfc
+    replace: ChatGSFC
+
+  - trigger: esd
+    replace: "Enterprise Service Desk (ESD)"
+
+  - trigger: poam
+    replace: POA&M
+
+  - trigger: rbd
+    replace: RBD
+
+  - trigger: webtads
+    replace: WebTADS
+
+  # Simple text replacements
+
+  - trigger: jggm
+    replace: "Good morning"
+
+  - trigger: jgchill
+    replace: "[Not Urgent]"
+
+  - trigger: jgesd
+    replace: "{{esd}} at 1-877-677-2123 or https://esd.nasa.gov/esdportal"
+    vars:
+    - name: esd
+      type: match
+      params:
+        trigger: "esd"
+
+  - trigger: jgsign
+    replace: "Thanks,\nJohn\n\n"
+
+  - trigger: "jgespanso"
+    replace: |
+      - trigger: 
+      	replace: 
+
+  - trigger: jgtest
+    replace: "jrgarrigues@yahoo.com"
+
+  - trigger: jgjk
+    replace: "#justkidding"
+
+  - trigger: jgcell
+    replace: "(650) 390-5537"
+
+  - trigger: jgoffice
+    replace: "(650) 604-1550"
+
+  - trigger: jgemail
+    replace: "john.r.garrigues@nasa.gov"
+
+  - trigger: "jgfrom"
+    replace: "from:garrigues "
+
+  - trigger: "jgsub"
+    replace: "subject:"
+    
+  - trigger: "jgboil"
+    replace: "boil it down to the bare minimum; just bullets; nothing else"
+
+  - trigger: "jgsnip"
+    replace: "<snipped to save space>"
+
+  - trigger: "jgweeklies"
+    replace: "subject:'Weekly Accomplishments'"
+
+  # CYBERSECURITY
+
+  - trigger: "jgconcur"
+    replace: " - Concur. This RBD has been reviewed for compliance to NSC action guidance."
+
+  - trigger: "jgpriority"
+    replace: "The Priority field for this POA&M is blank; please update the Priority and let me know once it's adjusted. If you are unable to update it 'in place', let me know and I'll return the POA&M."
+
+  - trigger: "jg3232"
+    replace: "ted.a.manning@nasa.gov; donovan.mathias@nasa.gov;katsutoshi.c.ishisoko@nasa.gov;neil.fernandes@nasa.gov"
+
+  - trigger: "jg3234"
+    replace: "justin.pane@nasa.gov; john.j.kemp@nasa.gov; zachary.burkland@nasa.gov"
+
+  - trigger: "jg3236"
+    replace: "wenchian.lee@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov; brandon.s.sanders@nasa.gov"
+
+  - trigger: "jg3238"
+    replace: "wenchian.lee@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov; brandon.s.sanders@nasa.gov"
+
+  - trigger: "jg3239"
+    replace: "james.h.bell@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov; brandon.s.sanders@nasa.gov"
+
+  - trigger: "jg3242"
+    replace: "tara.samuels@nasa.gov; christine.r.chase@nasa.gov; christopher.s.perry@nasa.gov"
+
+  - trigger: "jg3245"
+    replace: "becky.l.hooey@nasa.gov; erci.c.stern@nasa.gov"
+
+  - trigger: "jg3246"
+    replace: "david.b.hash@nasa.gov; austin.p.decker@nasa.gov; daniel.d.lehr@nasa.gov"
+
+  - trigger: "jg3247"
+    replace: "scott.g.eddlemon@nasa.gov; daniel.d.lehr@nasa.gov"
+
+  - trigger: "jg3248"
+    replace: "scott.g.eddlemon@nasa.gov; daniel.d.lehr@nasa.gov"
+
+  - trigger: "jg3249"
+    replace: "scott.poll@nasa.gov; costandi.m.wahhab@nasa.gov; julie.matsuda@nasa.gov"
+
+  - trigger: "jg3329"
+    replace: "julie.matsuda@nasa.gov; joel.lachter@nasa.gov; phillip.g.mertz@nasa.gov; costandi.m.wahhab@nasa.gov"
+
+  - trigger: "jg3597"
+    replace: "justin.hopkins@nasa.gov; don.m.beddell@nasa.gov; austin.p.decker@nasa.gov"
+
+  - trigger: "jg3603"
+    replace: "wenchian.lee@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov"
+
+  - trigger: "jg4479"
+    replace: "thomas.c.paine@nasa.gov; joseph.p.olsen@nasa.gov; annette.randall@nasa.gov"
+
+  - trigger: "jg4521"
+    replace: "wenchian.lee@nasa.gov; brian.p.stamper@nasa.gov; abhijit.n.marathe@nasa.gov; brandon.s.sanders@nasa.gov"
+
+  - trigger: "jg4586"
+    replace: "kevin.mcmillin@nasa.gov; julie.matsuda@nasa.gov"
+
+  - trigger: "jg4615"
+    replace: "zachary.s.roberts@nasa.gov; kenneth.freeman-1@nasa.gov; gina.medina@nasa.gov"
+
+  - trigger: "jg5509"
+    replace: "thomas.c.paine@nasa.gov; joseph.p.olsen@nasa.gov; annette.randall@nasa.gov"
+
+  - trigger: "jg5510"
+    replace: "thomas.c.paine@nasa.gov; joseph.p.olsen@nasa.gov; annette.randall@nasa.gov; christine.r.chase@nasa.gov"
+
+  - trigger: "jg5511"
+    replace: "thomas.c.paine@nasa.gov; joseph.p.olsen@nasa.gov; annette.randall@nasa.gov; christine.r.chase@nasa.gov"
+
+  - trigger: "jgISOISSO"
+    replace: "{{jg3232}};{{jg3234}};{{jg3236}};{{jg3238}};{{jg3239}};{{jg3242}};{{jg3245}};{{jg3246}};{{jg3247}};{{jg3248}};{{jg3249}};{{jg3329}};{{jg3597}};{{jg3603}};{{jg4479}};{{jg4521}};{{jg4586}};{{jg4615}};{{jg5509}};{{jg5510}};{{jg5511}}"
+    vars:
+      - name: jg3232
+        type: match
+        params:
+          trigger: "jg3232"
+      - name: jg3234
+        type: match
+        params:
+          trigger: "jg3234"
+      - name: jg3236
+        type: match
+        params:
+          trigger: "jg3236"
+      - name: jg3238
+        type: match
+        params:
+          trigger: "jg3238"
+      - name: jg3239
+        type: match
+        params:
+          trigger: "jg3239"
+      - name: jg3242
+        type: match
+        params:
+          trigger: "jg3242"
+      - name: jg3245
+        type: match
+        params:
+          trigger: "jg3245"
+      - name: jg3246
+        type: match
+        params:
+          trigger: "jg3246"
+      - name: jg3247
+        type: match
+        params:
+          trigger: "jg3247"
+      - name: jg3248
+        type: match
+        params:
+          trigger: "jg3248"
+      - name: jg3249
+        type: match
+        params:
+          trigger: "jg3249"
+      - name: jg3329
+        type: match
+        params:
+          trigger: "jg3329"
+      - name: jg3597
+        type: match
+        params:
+          trigger: "jg3597"
+      - name: jg3603
+        type: match
+        params:
+          trigger: "jg3603"
+      - name: jg4479
+        type: match
+        params:
+          trigger: "jg4479"
+      - name: jg4521
+        type: match
+        params:
+          trigger: "jg4521"
+      - name: jg4586
+        type: match
+        params:
+          trigger: "jg4586"
+      - name: jg4615
+        type: match
+        params:
+          trigger: "jg4615"
+      - name: jg5509
+        type: match
+        params:
+          trigger: "jg5509"
+      - name: jg5510
+        type: match
+        params:
+          trigger: "jg5510"
+      - name: jg5511
+        type: match
+        params:
+          trigger: "jg5511"
+
+  # MICROSOFT
+
+  - trigger: "jgms"
+    replace: "Microsoft"
+
+  - trigger: "jgpp"
+    replace: "Power Platform"
+
+  - trigger: "jgpow"
+    replace: "Power Automate"
+
+  - trigger: "jgpa"
+    replace: "Power App"
+
+  - trigger: "jgsp"
+    replace: "SharePoint"
+
+  - trigger: jgpcard
+    replace: "ARC P-Card"
+
+
+  # Images
+  - trigger: "jgbeer"
+    replace: '<img src="C:\\Users\\jrgarrig\\OneDrive - NASA\\pics\\icons\\nuke.png" width="200" height="200" alt="Da Bomb">'
+
+
+  # More emoji examples
+  - trigger: "jgastronaut"
+    replace: "🧑‍🚀 "
+
+  - trigger: "jgcheck"
+    replace: "✅"
+
+  - trigger: "jgdunno"
+    replace: "🤷‍♂️"
+
+  - trigger: "jglove"
+    replace: "❤️"
+
+  - trigger: "jgnnn"
+    replace: '<img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/NASA_logo.svg" width="110" height="92">'
+
+  - trigger: "jgmeatball"
+    replace: "{{emoji_to_clipboard}}"
+    vars:
+      - name: emoji_to_clipboard
+        type: script
+        params:
+          args:
+            - "C:\\Users\\jrgarrig\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe"
+            - -c
+            - |
+              import io
+              import sys
+              import tempfile
+              import os
+              import urllib.request
+              from PIL import Image
+              import win32clipboard
+              
+              def is_url(path):
+                  return path.startswith(('http://', 'https://'))
+              
+              def send_to_clipboard(image_path):
+                  # If the path is a URL, download it first
+                  if is_url(image_path):
+                      try:
+                          # Create a temporary file
+                          temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
+                          temp_file.close()
+                          
+                          # Download the image
+                          urllib.request.urlretrieve(image_path, temp_file.name)
+                          
+                          # Use the temp file path
+                          image_path = temp_file.name
+                      except Exception as e:
+                          print(f"Error downloading image: {e}", file=sys.stderr)
+                          return
+                  
+                  try:
+                      # Open and process the image
+                      image = Image.open(image_path)
+                      output = io.BytesIO()
+                      image.convert("RGB").save(output, "BMP")
+                      data = output.getvalue()[14:]  # The file header offset of BMP is 14 bytes
+                      output.close()
+                      
+                      # Set to clipboard
+                      win32clipboard.OpenClipboard()
+                      win32clipboard.EmptyClipboard()
+                      win32clipboard.SetClipboardData(win32clipboard.CF_DIB, data)
+                      win32clipboard.CloseClipboard()
+                      
+                      # Clean up temp file if we created one
+                      if is_url(image_path) and os.path.exists(temp_file.name):
+                          os.unlink(temp_file.name)
+                      
+                      print("", end="")  # Return empty string so Espanso doesn't replace with text
+                  except Exception as e:
+                      print(f"Error processing image: {e}", file=sys.stderr)
+              
+              # You can use either a local file path or a URL
+              # send_to_clipboard("https://www.nasa.gov/wp-content/uploads/2023/04/nasa-logo-web-rgb.png")
+              # Or use a local file:
+              send_to_clipboard("C:\\Users\\jrgarrig\\OneDrive - NASA\\pics\\icons\\meatball_emoji.png")
+
+  - trigger: "jgno"
+    replace: "⛔"
+
+  - trigger: "jgrocket"
+    replace: "🚀"
+    
+  - trigger: "jgrun"
+    replace: "🏃"
+
+  - trigger: jgsad
+    replace: "😢"
+
+  - trigger: "jgshh"
+    replace: "🤫"
+
+  - trigger: "jgsmile"
+    replace: "😊"
+
+  - trigger: "jgthumbsup"
+    replace: "👍"
+
+  - trigger: "jgyes"
+    replace: "✅"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: "jgdate"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
+  # Print the current day
+  - trigger: "jgday"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%A"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # Tomorrow
+  - trigger: "jgtomorrow"
+    replace: "{{tomorrow}}"
+    vars:
+      - name: tomorrow
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: 86400
+
+  # Day after tomorrow
+  - trigger: "jgtomorrow2"
+    replace: "{{day_after}}"
+    vars:
+      - name: day_after
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: 172800
+
+  # In a week
+  - trigger: "jginaweek"
+    replace: "{{inaweek}}"
+    vars:
+      - name: inaweek
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: 604800
+
+  # Yesterday
+  - trigger: "jgyesterday"
+    replace: "{{yesterday}}"
+    vars:
+      - name: yesterday
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: -86400
+
+  # Day before yesterday
+  - trigger: "jgyesterday2"
+    replace: "{{day_before}}"
+    vars:
+      - name: day_before
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: -172800
+
+  - triggers: 
+    - "SBI - "
+    - "sbi - "
+    replace: |
+      SBI - {{form.employee}} | {{form.feedback}} | Situation: {{form.situation}} | Behavior: {{form.behavior}} | Impact: {{form.impact}}
+    vars:
+      - name: form
+        type: form
+        params:
+          layout: |
+            Employee Name:
+            [[employee]]
+            Feedback Type:
+            [[feedback]]
+            Situation:
+            [[situation]]
+            Behavior:
+            [[behavior]]
+            Impact:
+            [[impact]]
+          fields:
+            employee:
+              type: choice
+              values:
+                - Bill
+                - Christine
+                - Gulsum
+                - John S.
+                - Justin G.
+                - Justin H.
+                - Kirsten
+                - Michael
+            feedback:
+              type: choice
+              values:
+                - Positive
+                - Negative
+            situation:
+              type: text
+              multiline: true
+              default: "In a meeting "
+            behavior:
+              type: text
+              multiline: true
+              default: "Employee was helpful"
+            impact:
+              type: text
+              multiline: true
+              default: "Employee made everyone feel welcome"
+
+
+
+
+
+  # AI  
+
+  - trigger: "jglc"
+    replace: "LibreChat"
+
+  - trigger: "jgchatGSFC"
+    replace: |
+      Have you checked out ChatGSFC yet? This is a technology demonstration that serves as a great example of the kind of GenAI tools that NASA is developing. Check out the 4-minute video on their SharePoint site at https://nasa.sharepoint.com/sites/AIML/SitePages/new.aspx. 
+      
+      High-level - it's a mult-model tool (e.g., Anthropic Claude, and OpenAI ChatGPT) that uses a really nice web interface. It's more like what you might be used to with proprietary products like ChatGPT, but it works with internal, non-ITAR/EAR/PII data. 
+      
+      ChatGSFC is available on a time-limited trial. If you are interested, you can submit a NAMS request: https://idmax.nasa.gov/nams/asset/270307 (they normally provision access very quickly). 
+      
+      Check it out and let me know what you think. 
+
+  - trigger: "jggenai"
+    replace: "NASA's guidance on the use of GenAI is located at https://nasa.sharepoint.com/sites/cio/SitePages/Use-of-Generative-AI.aspx. The document is a little dated, but still pertinent; a revision is currently in the works."
+
+
+  - trigger: "jgdaily"
+    replace: "{{day_info}}"
+    vars:
+      - name: day_info
+        type: script
+        params:
+          args:
+            - "C:\\Users\\jrgarrig\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe"
+            - -c
+            - |
+              import datetime
+              import os
+              import re
+
+              today = datetime.datetime.now()
+              date_str = today.strftime("%A, %Y-%m-%d")
+              
+              # Default schedule
+              start_time = "07:30"
+              lunch_start = "12:00"
+              lunch_end = "13:00"
+              end_time = "16:30"
+              hours = "8"
+              
+              # Day-specific information with multiple meeting entries
+              day_of_week = today.strftime("%A")
+
+              if day_of_week in ["Tuesday", "Thursday"]:
+                lunch_start = "13:00"
+                lunch_end = "14:00" 
+              
+              # Dictionary of meetings for each day
+              meetings = {
+                  "Monday": [
+                      "Meeting - IT Standup - reviewed mission freezes for this week and daily IT operational statuses.",
+                      "Meeting - Participated in ARC Weekly Executive Committee meeting, focused on ORBIT, Executive Orders, and operational statuses across the center.",
+                      "Meeting - Chaired weekly staff meeting for ARC CCIO - covered operational updates, highlighting ----"
+                  ],
+                  "Tuesday": [
+                      "Meeting - IT Standup - reviewed mission freezes for this week and daily IT operational statuses.",
+                      "Meeting - IT Operations Board - focused on ----.",
+                      "Meeting - IT Management Board - focused on ----.",
+                      "Meeting - CIO Staff Meeting - collaborated with OCIO leadership on multiple data calls and quick responses to various strategic events as a result of Executive Orders, DOGE requests for info, OPM and Federal CIO guidance that are being received by the agency.",
+                      "Meeting - Strategy Division Staff Meeting - focused on enterprise effects of DRP/RIF and the fallout impacting Center CIO organizations."
+                  ],
+                  "Wednesday": [
+                      "Meeting - IT Standup - reviewed mission freezes for this week and daily IT operational statuses.",
+                      "Meeting - Center CIO Community - focused on a wide range of strategic and operational issues that impact our community (ARRP responses, reorg/unMAP issues, Intune Supervisor Mode, Website admin mode).",
+                      "Meeting - Leadership Integration Forum - focused on ----."
+                  ],
+                  "Thursday": [
+                      "Meeting - IT Standup - reviewed mission freezes for this week and daily IT operational statuses."
+                  ],
+                  "Friday": [
+                      "Meeting - Chaired bi-weekly staff meeting for ARC CCIO civil servants - highlighting ----."
+                  ],
+                  "Saturday": [],
+                  "Sunday": []
+              }
+              
+              # Get meetings for today or use empty list if none
+              today_meetings = meetings.get(day_of_week, [])
+              if not today_meetings:
+                  today_meetings = ["No scheduled meetings today."]
+              
+              # Function to find ToDo items from only the most recent day entry
+              def get_todo_items_from_file():
+                  # Specify the exact path to your note file with double backslashes
+                  note_file = "C:\\Users\\jrgarrig\\Documents\\Obsidian Vault\\review.md"
+                  
+                  try:
+                      # Read the file content
+                      with open(note_file, 'r', encoding='utf-8') as file:
+                          content = file.read()
+                      
+                      # Find the first day entry (most recent)
+                      # Look for a date pattern like "Monday, 2025-04-28"
+                      day_pattern = r'\w+, \d{4}-\d{2}-\d{2}'
+                      day_matches = re.finditer(day_pattern, content)
+                      
+                      # Get the positions of the first two day headers
+                      positions = []
+                      for match in day_matches:
+                          positions.append(match.start())
+                          if len(positions) >= 2:
+                              break
+                      
+                      # If we found at least one day header
+                      if positions:
+                          # Extract the content of the most recent day
+                          if len(positions) >= 2:
+                              # From first day header to second day header
+                              most_recent_day = content[positions[0]:positions[1]]
+                          else:
+                              # From first day header to end of file
+                              most_recent_day = content[positions[0]:]
+                          
+                          # Find all lines containing "ToDo -" in the most recent day
+                          # and ignore lines starting with "SBI - "
+                          todo_items = []
+                          for line in most_recent_day.split('\n'):
+                              if re.search(r'todo - ', line.strip(), re.IGNORECASE) and not line.strip().startswith("SBI - "):
+                                  todo_items.append(line.strip())
+                          
+                          return todo_items
+                      
+                      return []
+                  except Exception as e:
+                      # If there's any error, return an empty list
+                      return []
+
+              # Get ToDo items from the most recent day entry
+              todo_items = get_todo_items_from_file()
+              
+              # Format the basic output
+              output = f"{date_str}\n{start_time} - {lunch_start} - {lunch_end} - {end_time} ({hours})\nAdmin - NAMS - 0\nCybersecurity - RISCS - 0"
+              
+              # Add ToDo items right after the basic info
+              for todo in todo_items:
+                  output += f"\n{todo}"
+              
+              # Add each meeting on a new line after ToDo items
+              for meeting in today_meetings:
+                  output += f"\n{meeting}"
+              
+              print(output)
+
+
+
+
+
+
+
+

@@ -1,0 +1,123 @@
+# General purpose snippets
+matches:
+
+  # straight up replacements
+  - trigger: chatgsfc
+    label: "ChatGSFC"
+    replace: ChatGSFC
+
+  - trigger: clemo
+    label: "CLeMO"
+    replace: CLeMO
+
+  - trigger: jgclemos
+    label: "Expand CLeMOs"
+    replace: "Center-Level Management Objectives (CLeMOs)"
+
+  - trigger: jgesd
+    label: "Enterprise Service Desk (ESD)"
+    replace: "Enterprise Service Desk (ESD)"
+
+  - trigger: zzz
+    label: "garrigues"
+    replace: garrigues
+
+  - trigger: xxx
+    label: "SSMX22025D"
+    replace: SSMX22025D
+
+  - trigger: poam
+    label: "POA&M"
+    replace: POA&M
+
+  - trigger: rbd
+    label: "RBD"
+    replace: RBD
+
+  - trigger: webtads
+    label: "WebTADS"
+    replace: WebTADS
+
+  # Simple text replacements
+  - trigger: jggm
+    label: "Good morning"
+    replace: "Good morning"
+
+  - trigger: jgchill
+    label: "[Not Urgent]"
+    replace: "[Not Urgent]"
+
+  - trigger: jgnssc
+    label: "ESD contact line"
+    replace: "{{jgesd}} at 1-877-677-2123 or https://esd.nasa.gov/esdportal"
+    vars:
+    - name: jgesd
+      type: match
+      params:
+        trigger: jgesd
+
+  - trigger: jgsign
+    label: "Signature block"
+    replace: "Thanks,\nJohn\n\n"
+
+  - trigger: "jgespanso"
+    label: "Espanso match template"
+    replace: |
+      - trigger: 
+      	replace: 
+
+  - trigger: jgjk
+    label: "#justkidding"
+    replace: "#justkidding"
+
+  - trigger: "jgfrom"
+    label: "from:garrigues"
+    replace: "from:garrigues "
+
+  - trigger: "jgsub"
+    label: "subject:"
+    replace: "subject:"
+    
+  - trigger: "jgboil"
+    label: "Prompt to boil down to bullets"
+    replace: "boil it down to the bare minimum; just bullets; nothing else"
+
+  - trigger: "jgsnip"
+    label: "<snipped to save space>"
+    replace: "<snipped to save space>"
+
+  - trigger: "jgweeklies"
+    label: "subject:'Weekly Accomplishments'"
+    replace: "subject:'Weekly Accomplishments'"
+
+  - trigger: jghth
+    label: "Hope this helps!"
+    replace: "Hope this helps!"
+
+  - trigger: jgdelay
+    label: "Sent with delayed delivery."
+    replace: "Sent with delayed delivery."
+
+  - trigger: jgdev
+    label: "Development subject prefix"
+    replace: "Development - ARC P-Card low-code/no-code Power App - "
+
+  - trigger: jgans
+    label: "Prompt for multiple-choice answer"
+    replace: "Please review the question and answer options, then print out the correct answer to the question. Only print the correct answer; do not explain or provide other details."
+
+  - trigger: jgsummarize
+    label: "Prompt to summarize text"
+    replace: "Please summarize the content of the following text/email:"
+
+  - trigger: jgonly
+    label: "Prompt to rewrite only part"
+    replace: "Only rewrite this specific part; don't rewrite the entire thing."
+
+  - trigger: jgbullet
+    label: "Prompt for accomplishment bullet"
+    replace: "Summarize the following content into a bullet that I can include in my weekly accomplishments submission. Keep it short and sweet."
+
+  - trigger: jgsecretkey
+    label: "Insert secret key"
+    replace: a3cshtekjf5lkfmmvchtwfmhmq4lwkbag4

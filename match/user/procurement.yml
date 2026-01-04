@@ -1,0 +1,20 @@
+# OCIO specific snippets
+matches:
+
+  # straight up replacements
+  - trigger: cypress
+    label: "CyPrESS"
+    replace: CyPrESS
+
+  - trigger: jgnats
+    label: "Expand NaTS"
+    replace: "Network and Telecommunications Services (NaTS)"
+
+  - trigger: jg1707
+    label: "IT procurement guidelines (CITR/ORCA)"
+    replace: |
+      Basically, all procurements that include IT components must follow these guidelines: 
+
+      ⁠Commercial IT Requests (CITR - https://ocio.nasa.gov/procurement/citr) - All IT procurements less than $7.5M are required to be processed through the OCIO CITR. OCIO commercial IT Management (CITM) team will develop all IT Procurement Packages (e.g., creation of PR, NF1707, NF1787 etc.) and then route them to the appropriate acquisition office for process. OCIO authorization is required prior to a PR being routed to the Information Technology Procurement Office (ITPO) who makes all IT purchases.
+      OCIO Requirements Coordination & Approval (ORCA - https://ocio.nasa.gov/procurement/orca) - All procurements and IT purchases over $7.5M are required to be processed through ORCA. ORCA assists with the acquisition planning by ensuring solicitations and contracts contain a baseline set of IT and data management requirements in compliance with Government and NASA policy, regulations, and laws.
+      Direct questions about any of this info to Michael Knight's team in EBMO: mailto:agency-dl-ocio-rca@mail.nasa.gov

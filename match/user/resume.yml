@@ -1,0 +1,205 @@
+# Snippets for Microsoft product names
+matches:
+
+  - trigger: jgcerts
+    label: "Certifications block"
+    replace: |
+      Industry Certifications:
+      AI Foundations Associate (Oracle) - October 2025
+      Technology Business Management Executive (TBM Council) - November 2024
+      Azure Fundamentals (Microsoft) - December 2023
+      Power Platform Fundamentals (Microsoft) - June 2022
+      ITIL Foundation V4 (AXELOS) - February 2021
+      Certified Associate in Python Programming (Python Institute) - July 2020
+      Certified Info Systems Security Professional (ISC)2 - September 2019
+      DevOps Foundation (DevOps Institute) - February 2017
+      ITIL Foundation V3 (AXELOS) - October 2016
+      Certified Tester Foundation Level (ISTQB) - July 2016
+      Certified Scrum Master (ScrumAlliance) - August 2015
+      Program Management Professional, PgMP (PMI) - May 2013 
+      FAC-COR Level I - July 2012
+      FAC-P/PM Level III - August 2011 
+      ITIL Practitioner, Release & Control (EXIN) - February 2008 
+      Project Management Professional, PMP (PMI) - September 2007 
+      ASQ Six Sigma Green Belt - June 2007 
+      ITIL Foundation V2 (EXIN) - August 2005 
+      Certified Help Desk Manager (STI Knowledge) - May 2005 
+      Certified Help Desk Professional (STI Knowledge) - November 2004 
+      MCSE: Security (Microsoft) - March 2004 
+      Security+ (CompTIA) - March 2004 
+      MCSA: Security (Microsoft) - December 2003 
+      A+ (CompTIA) - September 2003 
+      Network+ (CompTIA) - September 2003 
+      CCNA (Cisco) - September 2002
+
+  - trigger: jgintro
+    label: "Summary intro paragraph"
+    replace: "Accomplished IT executive with over two decades of experience leading technological transformations and strategic initiatives in government agencies, including interagency environments. Proven track record in overseeing large-scale IT projects, implementing enterprise-wide IT solutions, and demonstrating mastery across the full spectrum of IT disciplines, from modernization, development, and enhancement (MDE) to operations and maintenance (O&M). Demonstrated expertise in IT policy development, cybersecurity, and knowledge management at all levels. Adept at leveraging cutting-edge technologies and optimizing IT processes to enhance organizational efficiency and security. Strong background in strategic planning, stakeholder engagement, and change management. Skilled in leading multi-disciplinary teams and fostering collaboration across diverse organizations. Eager to apply expertise to advance key objectives."
+
+  - trigger: jgwork
+    label: "Work experience block"
+    replace: |
+      Position: Chief Information Officer
+      Level: SES
+      From: 9/2019 - Present 
+      Employer: National Aeronautics and Space Administration, Moffett Field, CA 94035
+      As the Chief Information Officer for NASA's Ames Research Center (ARC) in Silicon Valley, I lead the center's IT operations and serve as a senior executive on the agency's OCIO team. I oversee a diverse team of civil servants and contractors, delivering cutting-edge IT services to support mission-critical research. My responsibilities include strategic planning, IT policy development, cybersecurity oversight, and knowledge management at both local and enterprise levels. 
+      Leadership in Operations and Strategic Planning: 
+      - Direct IT operations for NASA ARC, collaborating with department heads to provide guidance, support, and problem-solving expertise across diverse scientific disciplines. 
+      - Develop and implement IT policies and procedures to govern IT solutions management functions at the enterprise level.
+      - Provide IT infrastructure, enterprise services (e.g., email, remote access, compute services, network, data center), and local, on-demand services (e.g., ComSec, radio-frequency, and spectrum management). 
+      - Assist in developing, staffing, and publishing operational plans and orders that impact resource allocation and mission objectives. 
+      - Actively participate in the Ames Center Priorities discussions, ensuring the ARC Center CIO's perspective is well-represented and initiatives are aligned with the center's broader goals.
+      Cybersecurity Leadership: 
+      - Serve as the Authorizing Official Designated Representative (AODR) for ARC, providing technical and organizational support to the Authorizing Official for 24 System Security Plans, comprising 2,500 individual security controls. 
+      - Lead agency-wide responses to cybersecurity vulnerabilities and initiatives, such as the Ivanti vulnerability and the National Security Council (NSC) cybersecurity initiative.
+      - Implement risk-based approaches to enhance the organization's overall cybersecurity posture.
+      Virtual Presence and Future of Work Initiatives: 
+      - Chair the OCIO Future of Work (FoW) workgroup, driving cultural change and digital transformation initiatives. 
+      - Enhance enterprise-wide knowledge management systems to improve information sharing and decision-making processes. 
+      - Provision modern, hybrid collaboration capabilities and enable hoteling workspaces across the center.
+      - Promote the adoption of cloud computing capabilities, demonstrating fiscal responsibility and technological foresight. 
+      Organizational Transformation and Change Management: 
+      - Lead the transition from a decades-old decentralized organizational structure to a centralized architecture, aligning with NASA's OCIO Transformation Effort. 
+      - Foster trust and cooperation during major organizational changes, demonstrating change management expertise. 
+      - Collaborate with other center CIOs and business line organizations to leverage resources, share best practices, and identify opportunities for cost savings and process improvements.
+      - Coordinate with department heads to negotiate and implement work-related changes affecting multiple activities, showcasing ability to work in joint, interagency environments.
+
+      Position: Chief Program Officer / Deputy Chief Technology Officer
+      Level: SES
+      From: 12/2016 - 9/2019 
+      Employer: Social Security Administration, Baltimore, MD 21235
+      As the Chief Program Officer and Deputy Chief Technology Officer at the Social Security Administration (SSA), I spearheaded the revitalization of the Disability Case Processing System (DCPS), a critical $300M enterprise-wide software development effort designed to adjudicate more than four million disability claims annually. In this dual role, I demonstrated strategic leadership in IT policy and planning, technological innovation, and effective stakeholder engagement. 
+      Strategic IT Leadership and Policy Development: 
+      - Successfully led the turnaround of SSA's $300M Disability Case Processing System (DCPS)1, enhancing the adjudication process for over four million disability claims annually. 
+      - Developed and implemented enterprise-wide IT policies and strategies to govern IT solutions management functions.
+      - Demonstrated exceptional program management and problem-solving skills, collaborating with department heads to provide guidance, support, and expertise.
+      Technology Integration and Cybersecurity: 
+      - Integrated cutting-edge technologies like cloud computing, machine learning, and IT security into the software development process.
+      - Acquired an Authority To Operate for SSA's first cloud-based, production application using Amazon Web Services (first in agency).
+      - Led the design and implementation of comprehensive cybersecurity measures to protect sensitive data and systems.
+      Knowledge Management and Process Improvement: 
+      - Pioneered the agency-wide adoption of Agile methodologies, transitioning a large program from Waterfall to Agile, demonstrating ability to lead organizational change.
+      - Implemented DevOps CI/CD mechanisms to support monthly release cycles, a significant improvement over traditional timelines.
+      - Promoted knowledge sharing and best practices across the agency, enhancing overall IT capabilities and efficiency.
+      Enterprise Architecture and Systems Development:
+      - Led the design, development, and deployment of a world-class, modern, web-
+      based application supporting the entire spectrum of disability determinations and appeals.
+      - Dramatically improved the velocity of software development teams, minimizing customer wait cycles.
+      - Maximized code reuse and standardization across related systems, improving overall system coherence and maintainability.
+      Stakeholder Engagement and Communication: 
+      - Maintained continuous communication with high-level internal stakeholders, including SSA's Commissioner and Chief of Staff.
+      - Engaged with external stakeholders, such as Congressional committees, government oversight bodies, and the White House Chief of Staff for Operations.
+      - Coordinated with external entities to conduct unbiased, third-party reviews of primary improvement efforts, ensuring transparency and accountability.
+
+      Position: Deputy Chief Program Officer
+      Level: SES
+      From: 6/2014 - 12/2016 
+      Employer: Social Security Administration, Baltimore, MD 21235
+      As Deputy Chief Program Officer at SSA, I played a pivotal role in the turnaround of the SSA's Disability Case Processing System (DCPS)2. My focus was on developing and implementing enterprise-wide IT policies, leveraging advanced cloud technologies, and transitioning from Waterfall to Agile methodologies. My responsibilities included comprehensive IT project management, enhancing software development capabilities, and implementing robust cybersecurity measures. I also led efforts to improve knowledge management practices and foster innovation across the organization. 
+      IT Policy Development and Strategic Planning: 
+      - Developed and implemented enterprise-wide IT policies to govern Agile methodologies and modern software development practices.
+      - Orchestrated a significant transformation to Agile methodologies, achieving a leaner, more efficient organizational structure with a 70/45 federal/contractor mix.
+      - Responsible for comprehensive IT project management, coordinating the full spectrum of portfolio management activities.
+      Knowledge Management and Organizational Transformation:
+      - Led enterprise-level Agile transformation, developing innovative procurement methods for Agile teams as a service (first in agency).
+      - Implemented knowledge sharing practices across teams to enhance overall organizational capabilities.
+      - Conducted OMB TechStat/PortfolioStat/FedStat reviews, demonstrating ability to manage and report on large-scale IT initiatives.
+      Cybersecurity and Risk Management:
+      - Revitalized risk management efforts, ensuring focus on objective-impacting issues and sharing risk with vendors through effective task order/contract management.
+      - Developed "Agile EVM" - a customized Earned Value Management structure for Agile methodologies, improving project oversight and risk mitigation (first in agency).
+      - Utilized Analytic Hierarchical Processes for resource planning and risk management, demonstrating data-driven decision-making skills.
+      Technological Innovation and Modernization: 
+      - Led the shift to a modern technology stack for product development, including cloud-native technologies (first in agency).
+      - Modernized database architecture to enhance system performance and scalability 
+      (first in agency).
+      - Leveraged Infrastructure-as-a-Service for the development and production environments, showcasing ability to adopt and implement emerging technologies 
+      (first in agency).
+      Stakeholder Engagement and Communication: 
+      - Maintained continuous communications with high-level internal stakeholders, including SSA's Commissioner and Chief of Staff.
+      - Engaged with external stakeholders, such as Congressional committees, government oversight bodies, demonstrating ability to work in interagency environments.
+      - Articulated technological advancements and project progress effectively to diverse stakeholder groups, showcasing strong communication skills.
+
+      Position: Executive Director / Program Manager
+      Level: SES (Term Limited)
+      Hours worked: 60 hours/week
+      From: 9/2012 - 6/2014
+      Employer: Social Security Administration, Durham, NC 27709
+      As SSA's Data Center Director and the executive program manager for the National Support Center, I led a team of 250 and managed a major data center and office complex in Durham, NC. 
+      My role extended to the strategic development and construction of the National Support Center (NSC), SSA's third enterprise-class data center in Urbana, MD. This position demanded high-level IT policy development, strategic planning, and forward-thinking leadership in enterprise-wide IT transformation. I was responsible for developing and implementing comprehensive IT strategies, and managing knowledge development at the enterprise level. 
+      Strategic IT Leadership and Policy Development: 
+      - Led a team of 250 employees and oversaw operations of a major data center and office complex, demonstrating exceptional leadership in complex IT environments.
+      - Developed and implemented enterprise-wide IT policies and strategies for data center operations and migration.
+      - Spearheaded the programming, design, and construction of SSA's third enterprise-
+      class data center, showcasing advanced project management and strategic planning capabilities.
+      Cybersecurity and Risk Management: 
+      - Implemented comprehensive cybersecurity measures for the new data center, ensuring protection of critical infrastructure and sensitive data.
+      - Developed and executed risk management strategies for the complex data center migration process.
+      Knowledge Management and IT Transformation: 
+      - Successfully executed a complex data center migration without any disruption to services, demonstrating expertise in large-scale IT transitions and knowledge transfer.
+      - Accelerated the adoption of private cloud solutions, achieving an 80% reduction in physical servers, showcasing ability to drive technological innovation.
+      - Implemented knowledge management systems to capture and share best practices across the organization.
+      Financial Management and Resource Allocation: 
+      - Managed a substantial multi-year budget, including the effective allocation of American Recovery and Reinvestment Act funds, demonstrating fiscal responsibility and strategic budgeting.
+      - Developed and executed procurement strategies for IT hardware, software, and services in compliance with federal regulations.
+      Stakeholder Engagement and Communication: 
+      - Provided continuous, high-level updates to both internal and external stakeholders, including executive sponsors, government agencies, and Congressional committees, highlighting my proficiency in stakeholder management.
+      - Articulated complex technical concepts and project progress to diverse audiences, demonstrating strong communication skills.
+
+      Position: Data Center Director 
+      GS-2210-15
+      Hours worked: 50 hours/week
+      From: 11/2007 - 9/2012
+      Employer: Social Security Administration, Durham, NC 27709
+      As the Data Center Director for SSA's Second Support Center4, I was instrumental in the foundational setup and management of the agency's second enterprise-class data center. My role involved comprehensive IT policy development, strategic planning, and execution, focusing on establishing robust IT operations, knowledge management, and infrastructure development. I was responsible for developing and implementing enterprise-wide IT strategies, overseeing cybersecurity initiatives, and managing large-scale IT projects. This position demanded a blend of technical expertise, policy formulation, and effective leadership in a complex IT environment. 
+      IT Policy Development and Strategic Planning: 
+      - Led the design, development, and implementation of IT operations from scratch, ensuring the operational readiness of SSA's second primary data center.
+      - Formulated enterprise-wide IT strategies to ensure operational readiness and long-
+      term sustainability of the data center.
+      - Created and implemented strategic staffing plans across 15 divisions, addressing over 30 distinct functional areas, demonstrating ability to manage large-scale operations in complex technical environments.
+      Knowledge Management and IT Infrastructure: 
+      - Developed and implemented knowledge management systems to capture and share best practices across divisions.
+      - Expanded the network Configuration Management Database to encompass all networked devices agency-wide, showcasing foresight in IT infrastructure scalability and information management.
+      - Created a decision support tool for managing personnel location statuses, enhancing knowledge sharing and operational efficiency.
+      Cybersecurity and Risk Management: 
+      - Implemented comprehensive cybersecurity measures for the new data center, ensuring protection of critical infrastructure and sensitive data.
+      - Developed and executed risk management strategies for the data center operations, aligning with federal IT security regulations and policies.
+      - Integrated security considerations into all aspects of data center design and operations.
+      Organizational Transformation and Change Management: 
+      - Led the organizational transformation necessary to operate a new, geographically separate data center.
+      - Managed change processes across multiple divisions, ensuring smooth adoption of new technologies and operational procedures.
+      - Fostered a culture of innovation and continuous improvement within the data center operations team.
+      Stakeholder Engagement and Strategic Communication: 
+      - Prepared senior management for high-level briefings and Congressional testimony, demonstrating skills in stakeholder communication and strategic information dissemination.
+      - Articulated complex technical concepts and project progress to diverse audiences, including executive leadership and government oversight bodies.
+      - Collaborated with multiple internal divisions and external partners, showcasing ability to work effectively in joint, interagency environments.
+
+  - trigger: jgedu
+    label: "Education block"
+    replace: |
+      Education:
+      - Graduate - Master of Science in Management (2020)
+      - Major: Information Systems and Services
+      - University of Maryland, Adelphi, MD 20783
+
+      - Graduate - 39 Semester Hours of Coursework (2010)
+      - Major: Business Administration
+      - University of Michigan, Dearborn, MI 48128
+
+      - Undergraduate - Bachelor of Science (2003)
+      - Major: Computer Studies, Minor: Management Studies
+      - University of Maryland, Adelphi, MD 20783 
+
+  - trigger: jgmilitary
+    label: "Military experience block"
+    replace: |
+      Military Experience: 
+      - USMC - 1983 - 1992; helicopter aircrew, platform instructor, drill instructor
+      - US Army - 1992 - 2004; helicopter pilot, maintenance test pilot, information systems warrant officer
+
+  - trigger: jgcivilian
+    label: "Civilian work history block"
+    replace: |
+      Work Experience:
+      - SSA - 2004 - 2019; IT operations, data center, project/program manager, software development, change manager
+      - NASA - 2019 - Present; chief information officer
