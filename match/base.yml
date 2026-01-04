@@ -1,0 +1,12 @@
+# espanso configuration file
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# This file includes all .yml files from the 'user' directory.
+# Ensure that the 'user' directory is in the same directory as this base.yml file.
+# For example, if base.yml is at: ~/.config/espanso/base.yml
+# The user directory should be at: ~/.config/espanso/user/
+
+import:
+  - user/*.yml
+
+
