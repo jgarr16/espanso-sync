@@ -14,10 +14,6 @@ matches:
     label: "AutoHotkey"
     replace: "AutoHotkey"
 
-  - trigger: jgalg
-    label: "Algebra practice prompt"
-    replace: "Create a series of algebra questions that can test me for my algebra knowledge. Make the questions start off easy, and slowly grow in difficulty and complexity. Continue providing these exercise questions until I tell you to stop. Do not ask me if I would like to try another question after each exercise question, just provide another one automatically. Only give an explanation of the problem and answer if I respond with an incorrect answer; otherwise just ask the next question. Start every new question off with a count of the number of questions (so I can keep up with how many questions I have left until my hourly quota has been reached); this represents Question #1. Show me Question #2 next."
-
   - trigger: jgauto
     label: "Autocorrect joke"
     replace: "I hate autocorrect (NOT-o-correct)!"
@@ -82,8 +78,14 @@ matches:
       716 Macon Dr.  
       Mountain View, CA 94043
 
-  - trigger: jgrent
-    label: "Rental inquiry bullets"
-    replace: "Hello ___ - My wife and I are interested in your property for late Jan/early Feb move-in. I'm a NASA civil servant relocating from California to Austin as a temporary base before an international move to South Korea. Seeking a 6-month lease with month-to-month flexibility thereafter. I have excellent references, stable government income, and two quiet cats. I'll be in Austin Jan 7-8 for house hunting and would love to schedule a viewing if this arrangement works for you and the owner. Thanks, John Garrigues"
+  - trigger: jgaustin
+    label: "rental address in Austin"
+    replace: "2624 Metcalfe Ln, Austin, TX 78741"
 
-  
+  - trigger: jgzip
+    label: "ZIP code"
+    replace: "78741"
+
+  - trigger:  
+    label: "Work email address"
+    replace: 

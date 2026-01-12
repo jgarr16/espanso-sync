@@ -5,5 +5,7 @@ matches:
     label: "Brief summary instruction"
     replace: "Write a very brief summary of the following for my daily log (shoot for 1 sentence, not long)"
 
-
+  - trigger: jgalg
+    label: "Algebra practice prompt"
+    replace: "Create a series of algebra questions that can test me for my algebra knowledge. Make the questions start off easy, and slowly grow in difficulty and complexity. Continue providing these exercise questions until I tell you to stop. Do not ask me if I would like to try another question after each exercise question, just provide another one automatically. Only give an explanation of the problem and answer if I respond with an incorrect answer; otherwise just ask the next question. Start every new question off with a count of the number of questions (so I can keep up with how many questions I have left until my hourly quota has been reached); this represents Question #1. Show me Question #2 next."
  
