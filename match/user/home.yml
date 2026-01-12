@@ -86,6 +86,10 @@ matches:
     label: "ZIP code"
     replace: "78741"
 
-  - trigger:  
-    label: "Work email address"
-    replace: 
+  - trigger: jgaustin
+    label: "rental address in Austin"
+    replace: "2624 Metcalfe Ln, Austin, TX 78741"
+
+  - trigger: jgzip
+    label: "ZIP code"
+    replace: "78741"
