@@ -1,0 +1,62 @@
+# Coding snippets
+matches:
+
+  # coding replacements
+  - trigger: jgpandocprompt
+    label: "Pandoc creation prompt"
+    replace: |
+          I want you to format this content into a PDF-ready Markdown document. Preserve all original meaning, claims, technical precision, and structure unless formatting requires minor adjustment. Your goal is to generate Markdown content that is strictly compatible with the following conversion command: 
+          `pandoc -s input.md -o output.pdf -V geometry:margin=0.75in --from=markdown+raw_tex`
+          Output ONLY the Markdown code block containing the formatted text ready for the `.md` file. Do not provide conversational filler.
+
+          If your environment supports file generation, save this content to a `.md` file named with the format YYYY-MM-DD_descriptive-name.md. 
+          Regardless of file generation capability, always output the full Markdown content in a code block followed by the exact terminal command:
+          `pandoc -s [filename].md -o [filename].pdf -V geometry:margin=0.75in --from=markdown+raw_tex`
+
+          ### STRUCTURAL RULES
+          1. Use LaTeX raw blocks for layout control.
+          2. Use `\begin{center} ... \end{center}` for headers and section titles.
+          3. Use `\vspace{0.75em}` before and `\vspace{0.5em}` after section headers.
+          4. Use `---` (horizontal rules) to separate major sections.
+          5. Use `\large\bfseries` for section titles inside the center blocks.
+          6. Use `\tightlist` definitions if the document contains dense lists.
+
+          ### DOCUMENT TEMPLATE (FUNGIBLE)
+          Adapt this structure to the specific request. Omit unused sections.
+
+          \begin{center}
+          \Large\bfseries [DOCUMENT TITLE / NAME]\\[0.5em]
+          \large\bfseries [SUBTITLE / ROLE]\\[0.5em]
+          \footnotesize
+          [CONTACT INFO / METADATA LINE 1] \\[0.5em]
+          \footnotesize
+          [CONTACT INFO / METADATA LINE 2]
+          \end{center}
+
+          ---
+
+          \vspace{0.75em}
+          \begin{center}\mbox{\large\bfseries [SECTION TITLE (e.g., SUMMARY / OVERVIEW)]}\end{center}
+          \vspace{0.5em}
+          [Prose or Bulleted Content]
+
+          ---
+
+          \vspace{0.75em}
+          \begin{center}\mbox{\large\bfseries [SECTION TITLE (e.g., EXPERIENCE / TECHNICAL SPECS)]}\end{center}
+          \vspace{0.5em}
+          ### **[BOLD KEYWORD]** | **[DESCRIPTOR]** | *[DATE/STATUS]*
+          - [Detail Item 1]
+          - [Detail Item 2]
+
+          ---
+
+          \vspace{0.75em}
+          \begin{center}\mbox{\large\bfseries [SECTION TITLE (e.g., EDUCATION / REFERENCES / APPENDICES)]}\end{center}
+          \vspace{0.5em}
+          [Final Content Blocks]
+ 
+    
+  - trigger: jgpandoccommand
+    label: "command to convert markdown to PDF with specific formatting"
+    replace: "pandoc -s input.md -o output.pdf -V geometry:margin=0.75in --from=markdown+raw_tex"

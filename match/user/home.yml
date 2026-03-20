@@ -4,7 +4,7 @@ matches:
   # straight up replacements
   - trigger: jgabout
     label: "About John blurb"
-    replace: "Perpetual tinkerer, Python hobbyist, JavaScript muddler, Swift wannabe, and semi-automator of all kinds of things!"
+    replace: "Experienced Enterprise IT professional by day, dedicated Python hobbyist and emerging AI enthusiast by night. I bring structured systems thinking to my true passions: tinkering with code, muddling through JavaScript, and semi-automating... everything."
 
   - trigger: jgaccomp
     label: "- [ ] accomp:"
@@ -75,21 +75,17 @@ matches:
   - trigger: jghome
     label: "Mailing address"
     replace: |
-      716 Macon Dr.  
-      Mountain View, CA 94043
+      2624 Metcalfe Road #7  
+      Austin, TX 78741-5761
 
-  - trigger: jgaustin
+  - trigger: #jgaustin
     label: "rental address in Austin"
-    replace: "2624 Metcalfe Ln, Austin, TX 78741"
+    replace: "2624 Metcalfe Road #7, Austin, TX 78741-5761"
 
-  - trigger: jgzip
+  - trigger: #jgzip
     label: "ZIP code"
     replace: "78741"
 
-  - trigger: jgaustin
-    label: "rental address in Austin"
-    replace: "2624 Metcalfe Ln, Austin, TX 78741"
-
-  - trigger: jgzip
-    label: "ZIP code"
-    replace: "78741"
+  - trigger: jgstreet
+    label: "Austin street address"
+    replace: "2624 Metcalfe Road #7"

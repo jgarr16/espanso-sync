@@ -18,14 +18,6 @@ matches:
     label: "Enterprise Service Desk (ESD)"
     replace: "Enterprise Service Desk (ESD)"
 
-  - trigger: zzz
-    label: "garrigues"
-    replace: garrigues
-
-  - trigger: xxx
-    label: "SSMX22025D"
-    replace: SSMX22025D
-
   - trigger: poam
     label: "POA&M"
     replace: POA&M
@@ -33,10 +25,6 @@ matches:
   - trigger: rbd
     label: "RBD"
     replace: RBD
-
-  - trigger: webtads
-    label: "WebTADS"
-    replace: WebTADS
 
   # Simple text replacements
   - trigger: jggm

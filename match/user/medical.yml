@@ -18,3 +18,15 @@ matches:
         type: date
         params:
           format: "%Y-%m-%d"
+
+  - trigger: "jgvaratings"
+    label: "VA ratings template"
+    replace: |
+          Service-connected ratings:
+          - 50% rating for persistent depressive disorder with associated anxiety and insomnia secondary to chronic pain. Effective date: February 05, 2025
+          - 0% rating for hypertension. Effective date: April 01, 2004
+          - 0% rating for status post, right ankle fracture with residuals. Effective date: April 01, 2004
+          - 0% rating for migraine headaches. Effective date: April 01, 2004
+          - 20% rating for degenerative disc disease, C5-6 and 6-7. Effective date: April 01, 2004
+          Conditions VA determined aren't service-connected:
+          - bilateral, tinnitus

@@ -13,7 +13,7 @@ matches:
     label: "Power Automate"
     replace: "Power Automate"
 
-  - trigger: "jgpa"
+  - trigger: # "jgpa"
     label: "Power App"
     replace: "Power App"
 

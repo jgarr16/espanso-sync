@@ -2,7 +2,7 @@
 matches:
 
   # Print the current date
-  - trigger: "jgdate"
+  - trigger: "jgtoday"
     label: "Today's date (YYYY-MM-DD)"
     replace: "{{mydate}}"
     vars:
